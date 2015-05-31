@@ -1,0 +1,73 @@
+p {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16pt;
+    line-height: 150%;
+    color: gray;
+    text-indent: 2.0em;
+}
+
+p.small {
+    font-size: 14pt;
+}
+
+.container {
+    display: inline-block;
+    width: 60%;
+    margin: 100px auto;
+}
+
+.bg-left {
+    height: 100%;
+    width: 20%;
+    float:left;
+    /*background-image: url("images/hitter.jpg");*/
+    background-size: cover;
+}
+
+.bg-right {
+    height: 100%;
+    width: 20%;
+    float: right;
+    /*background-image: url("images/pitcher.jpg");*/
+    background-size: cover;
+}
+
+.column-left{ float: left; width: 33%; }
+.column-right{ float: right; width: 33%; }
+.column-center{ display: inline-block; width: 33%; }
+
+.space {
+    margin: 15px;
+    display: block;
+}
+
+.center {
+    text-align: center;;
+}
+
+.notop {
+    margin-top: 0;
+}
+
+img {
+    width: 100%;
+}
+
+h1 {
+    padding: 10px 20px;
+}
+
+h1.light {
+    color: black;
+    background-color: white;
+}
+
+h1.dark {
+    color: white;
+    background-color: black;
+}
+
+h1.blue {
+    color: white;
+    background-color: #029EDC;
+}
