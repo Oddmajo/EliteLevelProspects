@@ -1,0 +1,77 @@
+/* Padding for spacing */
+
+.masthead-inner {
+    padding: 30px;
+}
+
+/*
+ * Header
+ */
+.masthead-brand {
+  margin-top: 0px;
+  margin-bottom: 30px;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  color: #494949;
+}
+
+.masthead-container {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.masthead-nav > li {
+  display: inline-block;
+}
+.masthead-nav > li + li {
+  margin-left: 20px;
+}
+.masthead-nav > li > a {
+  padding-right: 0;
+  padding-left: 0;
+  font-size: 20px;
+  font-weight: normal;
+  font-family: 'Pathway Gothic One', sans-serif;
+  text-transform: uppercase;
+  color: rgba(73,73,73,.75);
+  border-bottom: 2px solid transparent;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.masthead-nav > li > a:hover,
+.masthead-nav > li > a:focus {
+  background-color: transparent;
+  border-bottom-color: rgba(73,73,73,.25);
+}
+.masthead-nav > .active > a,
+.masthead-nav > .active > a:hover,
+.masthead-nav > .active > a:focus {
+  color: #494949;
+  border-bottom-color: #494949;
+}
+
+@media (min-width: 768px) {
+  .masthead-brand {
+    float: left;
+  }
+  .masthead-nav {
+    float: right;
+  }
+  /* Pull out the header and footer */
+  .masthead {
+    position: fixed;
+    top: 0;
+  }
+    .masthead,
+    .masthead-container {
+    width: 100%; /* Must be percentage or pixels for horizontal alignment */
+  }
+}
+
+@media (min-width: 992px) {
+
+  .masthead,
+  .masthead-container {
+    width: 900px;
+  }
+}

@@ -1,0 +1,47 @@
+.site-wrapper {
+  display: table;
+  width: 100%;
+  height: 100%; /* For at least Firefox */
+  min-height: 100%;
+
+}
+.site-wrapper-inner {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.content-container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.inner {
+  padding: 30px;
+}
+
+.content {
+    padding: 5px 20px;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: #eee;
+}
+
+/* Padding for spacing */
+
+
+@media (min-width: 768px) {
+    /* Start the vertical centering */
+    .site-wrapper-inner {
+      vertical-align: middle;
+    }
+.content-container {
+    position: relative;
+    width: 100%; /* Must be percentage or pixels for horizontal alignment */
+  }
+}
+
+@media (min-width: 992px) {
+}
