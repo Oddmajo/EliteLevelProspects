@@ -15,7 +15,7 @@ require('navbar.php');
 <div class="bg-left">
 	<div class="space">
 		<h1 class="small">
-			This will be coaches profile
+			This will be the user profile
 		</h2>
 	</div>
 </div>
@@ -28,7 +28,7 @@ require('navbar.php');
 	<div class="space">
 		<div class="post">
 			<div class="space">
-				<h1> One of my athletes just hit 5 home runs in a single game </h1>
+				<h1> One of my athletes just hit 2 home runs in a single game </h1>
 				<div class="leftpic">
 					<div class="space">
 						<img src="images/hitter.jpg">
@@ -38,9 +38,9 @@ require('navbar.php');
 					<div class = "space">
 						<h2>
 						Name: Roll Fizzlebeef <br><br>
-						Age: 100 eons <br><br>
-						Height: 10ft <br><br>
-						Weight: 1 imperial ton <br><br>
+						Age: 16 <br><br>
+						Height: 5ft 10in <br><br>
+						Weight: 140 <br><br>
 						</h2>
 					</div>
 				</div>
@@ -50,22 +50,25 @@ require('navbar.php');
 	<div class="space">
 		<div class="post">
 			<div class="space">
-				<h1> I just scouted a game where this kid threw a pitch that broke the sound barrier </h1>
+				<h1> I just scouted a game where this kid threw a near-perfect game </h1>
+				
+				<div class="lefttext">
+					<div class="space">
+						<h2>
+						Name: Big McLargehuge <br><br>
+						Age: 18 <br><br>
+						Height: 6ft 2in <br><br>
+						Weight: 190 <br><br>
+						</h2>
+					</div>
+				</div>
+				
 				<div class="rightpic">
 					<div class="space">
 						<img src="images/pitcher.jpg">
 					</div>
 				</div>
-				<div class="lefttext">
-					<div class = "space">
-						<h2>
-						Name: Big McLargeHuge <br><br>
-						Age: 1 Large Year <br><br>
-						Height: 100ft <br><br>
-						Weight: 1 metric ton <br><br>
-						</h2>
-					</div>
-				</div>
+				
 			</div>
 		</div>
 	</div>

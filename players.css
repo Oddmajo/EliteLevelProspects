@@ -1,23 +1,21 @@
 p {
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: 14pt;
+    font-size: 16pt;
     line-height: 150%;
     color: gray;
-    text-indent: 2.0em;
 }
 
 .main {
     display: inline-block;
     width: 70%;
-    margin: 50px auto;
+    margin: 45px auto;
 }
 
-.leftmargin{
-	float: left;
-	width: 15%;
-	height: 100%;
-	border-right: double;
-	border-right-color: black;
+.segment{
+	background-color: #111111;
+	border: solid;
+	border-color: white;
+	height: 600px;
 }
 
 .bg-left {
@@ -39,13 +37,9 @@ p {
     display: block;
 }
 
-.post{
-	display: inline-block;
-	width: 100%;
-	height: 450px;
-	border-color: white;
-	border: solid;
-	background-color: #111111;
+.sspace {
+    margin: 15px;
+    display: block;
 }
 
 .center {
@@ -56,43 +50,47 @@ p {
 	text-align: left;
 }
 
-.notop {
-    margin-top: 0;
-}
-
-.noleft{
-	margin-left: 0;
-}
-
-.leftpic{
+.leftMedia{
+	width: 25%;
 	float: left;
-	width: 20%;
 }
 
-
-.leftvideo{
-	float: left;
-	width: 40%;
+.mediachoice{
+	width: 25%;
+	display: inline-block;
 }
 
-.lefttext{
-	float: left;
-	width: 80%;
-}
-
-.rightpic{
+.rightMedia{
+	width: 50%;
 	float: right;
-	width: 20%;
 }
 
+.leftbox{
+	float: left;
+	width: 49.5%;
+	border: solid;
+	border-color: #333333;
+	height: 600px;
+}
 
+.rightbox{
+	float: right;
+	width: 49.5%;
+	border: solid;
+	border-color: #333333;
+	height: 600px;
+}
 
 img {
     width: 100%;
+	border: solid;
+	border-color: #333333;
 }
 
 img.vid{
-	width: 25%;
+	width: 100%;
+	border: solid;
+	border-color: #333333;
 }
 
 h2{
@@ -105,7 +103,7 @@ h2{
 
 h1 {
     padding: 10px 20px;
-	font-size: 16pt;
+	font-size: 20pt;
 	color: white;
     background-color: #029EDC;
 }
@@ -113,7 +111,7 @@ h1 {
 h1.light {
     color: black;
     background-color: white;
-	font-size: 150%;
+	font-size: 18pt;
 }
 h1.small{
 	color: white;
