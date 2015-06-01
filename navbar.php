@@ -10,9 +10,9 @@
             <nav>
                 <ul class="nav masthead-nav">
                     <li class="active"><a href="home.php">Home</a></li>
-                    <li><a href="forum.php">Coaches Forum</a></li>
-                    <li><a href="forum.php">Player Bios</a></li>
-                    <li><a href="forum.php">Contact Us</a></li>
+                    <li><a href="test.php">Coaches Forum</a></li>
+                    <li><a href="test.php">Player Bios</a></li>
+                    <li><a href="test.php">Contact Us</a></li>
                     <?php
                     if (isset($_SESSION['username'])) { ?>
                         <li><a href="account.php">My Account</a></li>
