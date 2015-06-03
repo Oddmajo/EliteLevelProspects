@@ -6,10 +6,10 @@
 <div class="masthead-container">
     <div class="masthead">
         <div class="masthead-inner">
-            <img class="masthead-brand" src="images/logo.png" alt="Elite Level Prospects" width="140" height="133">
+            <img class="masthead-brand" src="images/logo.png" alt="Elite Level Prospects" width="60" height="60">
             <!--<h2 class="masthead-brand">Elite Level Prospects</h3>-->
             <nav>
-                <ul class="nav masthead-nav">
+                <ul class="masthead-nav">
                     <li class="active"><a href="home.php">Home</a></li>
                     <li><a href="test.php">Coaches Forum</a></li>
                     <li><a href="test.php">Player Bios</a></li>
@@ -22,6 +22,8 @@
                     <?php } ?>
                 </ul>
             </nav>
+			<img class="masthead-brand-right" src="images/logo.png" alt="Elite Level Prospects" width="60" height="60">
+            <!--<h2 class="masthead-brand">Elite Level Prospects</h3>-->
         </div>
     </div>
 </div>
