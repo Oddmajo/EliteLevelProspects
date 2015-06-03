@@ -10,9 +10,6 @@
 .masthead-brand {
   margin-top: 0px;
   margin-bottom: 30px;
-  font-family: 'Oswald', sans-serif;
-  text-transform: uppercase;
-  color: #494949;
 }
 
 .masthead-container {
@@ -53,9 +50,11 @@
 @media (min-width: 768px) {
   .masthead-brand {
     float: left;
+    margin-left: 0px;
+    margin-right: 30px;
   }
   .masthead-nav {
-    float: right;
+    float: left;
   }
   /* Pull out the header and footer */
   .masthead {
@@ -69,6 +68,10 @@
 }
 
 @media (min-width: 992px) {
+    .masthead-brand {
+      margin-left: 100px;
+      margin-right: 30px;
+    }
 
   .masthead,
   .masthead-container {

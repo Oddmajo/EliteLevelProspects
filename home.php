@@ -14,10 +14,10 @@
     <link href="common.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="cover.css" rel="stylesheet">
+    <link href="home.css" rel="stylesheet">
 
-    <!-- Google fonts-->
-    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <!-- Google fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Montserrat|Jockey+One|Russo+One' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
@@ -52,7 +52,7 @@
 
     <div class="cover-container">
         <div class="inner cover">
-            <h1 class="cover-heading">The leader in baseball player stats and bios.</h1>
+            <h1 class="cover-heading">The best baseball recruiting website in the midwest.</h1>
             <p class="lead">With all the statistics that major league baseball scouts are looking for, as well as personalized player biographies, our site is engineered to give coaches and scouts the most information possible about you as an athlete and as a person.</p>
             <p class="lead">
                 <a href="https://www.youtube.com/embed/wlXuqdzA1nY" class="btn btn-lg btn-default">Play video</a>

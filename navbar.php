@@ -6,7 +6,8 @@
 <div class="masthead-container">
     <div class="masthead">
         <div class="masthead-inner">
-            <h2 class="masthead-brand">Elite Level Prospects</h3>
+            <img class="masthead-brand" src="images/logo.png" alt="Elite Level Prospects" width="140" height="133">
+            <!--<h2 class="masthead-brand">Elite Level Prospects</h3>-->
             <nav>
                 <ul class="nav masthead-nav">
                     <li class="active"><a href="home.php">Home</a></li>

@@ -1,0 +1,42 @@
+/*
+layout.css
+6/2/2015
+Joe Sorgea
+
+This css file makes it easier to design layouts for webpages. It is adapted from the layout code at http://www.responsivegridsystem.com/.
+*/
+
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/* this makes the entire box model of an element take up its width, instead of only the inner content */
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* generic row and column definitions, these can be added upon with other styles */
+.page {
+    display: flex;
+}
+
+.row {
+    border: 2px solid red;
+    height: auto;
+    flex: 1;
+    flex-direction: row;
+}
+
+.column {
+    border: 2px solid red;
+    text-align: center;
+    flex: 1;
+}
+
+.grow {
+    flex-grow: 3;
+}
