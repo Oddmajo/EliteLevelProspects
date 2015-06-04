@@ -40,48 +40,32 @@ if (isset($_GET['login'])) {
 <head>
     <title>Sign In</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="common.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="login.css">
-
-    <!--<link rel="stylesheet" type="text/css" href="forum.css">-->
 
     <!-- Google fonts-->
     <link href='http://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
-<div class="site-wrapper">
-<div class="site-wrapper-inner">
-
 <?php
     include_once('navbar.php');
 ?>
-
-<form class="form-signin" action="?login=1" method="post">
-    <h2 class="form-signin-heading">Please sign in</h2>
-    <label for="inputUsername" class="sr-only">Username</label>
-    <input type="username" id="inputUsername" name="username" class="form-control" placeholder="Username" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-    <div class="checkbox">
-        <label>
-        I am a: <input type="radio" name="usertype" value="coach" checked>Coach
-        <input type="radio" name="usertype" value="player">Player
-        </label>
+<div class="content">
+    <div class="content-column-center">
+        <form class="form-signin" action="?login=1" method="post">
+            <h2 class="form-signin-heading">Please sign in</h2>
+            <label for="inputUsername" class="sr-only">Username</label>
+            <input type="username" id="inputUsername" name="username" class="form-control" placeholder="Username" required autofocus>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+            <div class="checkbox">
+                <label>
+                I am a: <input type="radio" name="usertype" value="coach" checked>Coach
+                <input type="radio" name="usertype" value="player">Player
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-</form>
-
 </div>
-</div>
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="bootstrap/ie10-viewport-bug-workaround.js"></script>
 </body>

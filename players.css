@@ -81,7 +81,7 @@ p {
 	height: 600px;
 }
 
-img {
+img.players {
     width: 100%;
 	border: solid;
 	border-color: #333333;

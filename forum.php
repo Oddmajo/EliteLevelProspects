@@ -1,15 +1,17 @@
-<?php
-$allowCoaches = true;
-require('protected.php');
-require('navbar.php');
-?>
-
 <head>
+    <title>Coaches Forum</title>
+
     <link rel="stylesheet" type="text/css" href="forum.css">
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
+<?php
+    $allowCoaches = true;
+    require('protected.php');
+    include_once('navbar.php');
+?>
+<div class="content">
 <div class="bg-left">
 	<div class="space">
 		<h1 class="small">
@@ -17,7 +19,6 @@ require('navbar.php');
 		</h2>
 	</div>
 </div>
-
 
 <div class = "main">
 	<h1 class="light">
@@ -29,7 +30,7 @@ require('navbar.php');
 				<h1> One of my athletes just hit 2 home runs in a single game </h1>
 				<div class="leftpic">
 					<div class="space">
-						<img src="images/hitter.jpg">
+						<img class="forum" src="images/hitter.jpg">
 					</div>
 				</div>
 				<div class="righttext">
@@ -63,7 +64,7 @@ require('navbar.php');
 
 				<div class="rightpic">
 					<div class="space">
-						<img src="images/pitcher.jpg">
+						<img class="forum" src="images/pitcher.jpg">
 					</div>
 				</div>
 
@@ -79,5 +80,6 @@ require('navbar.php');
 			This will be a checkbox
 		</h1>
 	</div>
+</div>
 </div>
 </body>

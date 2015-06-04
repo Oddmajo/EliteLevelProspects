@@ -1,83 +1,36 @@
-/* Padding for spacing */
-
-.masthead-inner {
-    padding: 30px;
-}
-
-/*
- * Header
- */
-.masthead-brand {
-  margin-top: 0px;
-  margin-bottom: 30px;
-}
-
-.masthead-container {
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.masthead-nav > li {
-  display: inline-block;
-}
-.masthead-nav > li + li {
-  margin-left: 20px;
-}
-.masthead-nav > li > a {
-  padding-right: 0;
-  padding-left: 0;
-  font-size: 20px;
-  font-weight: normal;
-  font-family: 'Pathway Gothic One', sans-serif;
-  text-transform: uppercase;
-  color: #74A8E1;
-  border-bottom: 2px solid transparent;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-.masthead-nav > li > a:hover,
-.masthead-nav > li > a:focus {
-  background-color: transparent;
-  border-bottom-color: rgba(73,73,73,.25);
-}
-.masthead-nav > .active > a,
-.masthead-nav > .active > a:hover,
-.masthead-nav > .active > a:focus {
-  color: #494949;
-  border-bottom-color: #494949;
-}
-
-@media (min-width: 768px) {
-  .masthead-brand {
-    float: left;
-    margin-left: 0px;
-    margin-right: 0px;
-  }
-  .masthead-nav {
-    float: left;
-  }
-  /* Pull out the header and footer */
-  .masthead {
+/* The navigation bar. Uses a flexbox to horizontally lay out children. */
+.navbar {
+    top: 0px; /* This fixes an issue where the header's margin was setting itself to the content's */
     position: fixed;
-    top: 0;
-  }
-    .masthead,
-    .masthead-container {
-    width: 100%; /* Must be percentage or pixels for horizontal alignment */
-  }
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,0));
 }
 
-@media (min-width: 992px) {
-    .masthead-brand {
-      margin-left: 90px;
-      margin-right: 30px;
-    }
-	.masthead-brand-right {
-      margin-left: 30px;
-    }
+/* A column of the navbar (for links, logos, etc.). Uses a flexbox to vertically center children. */
+.navbar-column {
+    height: 100px;
+    margin: 0px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
-  .masthead,
-  .masthead-container {
-    width: 900px;
-  }
+.navbar-column > a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: normal;
+    font-family: 'Pathway Gothic One', sans-serif;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+}
+.navbar-column > a:hover,
+.navbar-column > a:focus {
+    background-color: transparent;
+    color: white;
+    border-bottom-color: rgba(255,255,255,.25);
 }
