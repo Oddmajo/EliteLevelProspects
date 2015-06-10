@@ -3,6 +3,7 @@
 
     <link rel="stylesheet" type="text/css" href="players.css">
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+	<script src="tab-content/tabcontent.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -52,55 +53,50 @@
 					
 				</div>
 			</div>
-			<div class="space">
-				<div class="ssegment">
-					<div class="fourtab">
-						<div class="sspace">
-							Tab
-						</div>
+			<div class="sspace">
+				<div class="tabbar">
+					<div class="tabbar-tab4">
+						Videos
 					</div>
-					<div class="fourtab">
-						<div class="sspace">
-							Tab
-						</div>
+					<div class="tabbar-tab4">
+						Analysis
 					</div>
-					<div class="fourtab">
-						<div class="sspace">
-							Tab
-						</div>
+					<div class="tabbar-tab4">
+						Projections
 					</div>
-					<div class="fourtab">
-						<div class="sspace">
-							Tab
-						</div>
+					<div class="tabbar-tab4">
+						Misc
 					</div>
 				</div>
 			</div>
 			<div class="tabbedsegment">
 				<div class="space">
-					<div class="ssegment">
-						<div class="threetab">
-							<div class="sspace">
-								Tab
+					<div class="tabcontents">
+						<div id="videos">
+							<div class="tabbar">
+								<div class="tabbar-tab3">
+									Batting
+								</div>
+								<div class="tabbar-tab3">
+									Pitching
+								</div>
+								<div class="tabbar-tab3">
+									Running
+								</div>
+							</div>
+							<div class="space">
+								Here is the video and stats
 							</div>
 						</div>
-						<div class="threetab">
-							<div class="sspace">
-								Tab
-							</div>
-						</div>
-						<div class="threetab">
-							<div class="sspace">
-								Tab
-							</div>
-						</div>
+						
 					</div>
-				</div>
-				<div class="space">
-					Here is the video and stats
 				</div>
 			</div>
 		</div>
+		
+		
+		
+		
 	</div>
 	<div class="bg-right">
 		<div class="space">

@@ -29,12 +29,31 @@
 	border-color: white;
 	height: 800px;
 }
-.ssegment{
+.tabbar{
 	background-color: #333333;
 	border: solid;
 	border-color: white;
 	height: 50px;
+	color: white;
+	display: flex;
+	justify-content: center;
 }
+.tabbar-tab4{
+	display: flex;
+	text-align: center;
+	flex-direction: column;
+	justify-content: center;
+    width: 24.75%;
+}
+.tabbar-tab3{
+	display: flex;
+	text-align: center;
+	flex-direction: column;
+	justify-content: center;
+    width: 33%;
+}
+
+
 
 .space {
     margin: 25px;
@@ -82,17 +101,6 @@ img.vid{
 	width: 100%;
 	border: solid;
 	border-color: #333333;
-}
-
-.fourtab{
-	display: inline-block;
-	text-align: center;
-	width: 24.75%;
-}
-.threetab{
-	display: inline-block;
-	width: 33%;
-	text-align: center;
 }
 
 h1 {
