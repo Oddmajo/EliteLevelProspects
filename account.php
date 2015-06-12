@@ -1,10 +1,10 @@
 <head>
     <title>My Account</title>
 
-    <link rel="stylesheet" type="text/css" href="login.css">
-
+    <link href="login.css" rel="stylesheet" type="text/css">
+    <link href="commonstyles.css" rel="stylesheet" type="text/css">
     <!-- Google fonts-->
-    <link href='http://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 </head>
 
 <body>

@@ -9,7 +9,11 @@
     <div class="navbar-column"><a href="home.php">Home</a></div>
     <div class="navbar-column"><a href="forum.php">Coaches Forum</a></div>
     <div class="navbar-column"><a href="players.php">Player Bios</a></div>
-    <div class="navbar-column"><a href="test.php">Contact Us</a></div>
+    <div class="navbar-column"><a href="test.php">Scouts</a></div>
+    <div class="navbar-column"><a href="test.php">Top Prospects</a></div>
+    <div class="navbar-column"><a href="test.php">Trainers</a></div>
+    <div class="navbar-column"><a href="test.php">Five-Tool Model</a></div>
+    <div class="navbar-column"><a href="test.php">About</a></div>
     <div class="navbar-column">
         <?php
         if (isset($_SESSION['username'])) { ?>

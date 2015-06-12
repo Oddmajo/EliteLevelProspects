@@ -40,10 +40,11 @@ if (isset($_GET['login'])) {
 <head>
     <title>Sign In</title>
 
+    <link href='commonstyles.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="login.css">
 
     <!-- Google fonts-->
-    <link href='http://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
@@ -53,10 +54,10 @@ if (isset($_GET['login'])) {
 <div class="content">
     <div class="content-column-center">
         <form class="form-signin" action="?login=1" method="post">
-            <h2 class="form-signin-heading">Please sign in</h2>
-            <label for="inputUsername" class="sr-only">Username</label>
+            <h2 class="form-signin-heading">Member sign in</h2>
+            <!--<label for="inputUsername" class="sr-only">Username</label>-->
             <input type="username" id="inputUsername" name="username" class="form-control" placeholder="Username" required autofocus>
-            <label for="inputPassword" class="sr-only">Password</label>
+            <!--<label for="inputPassword" class="sr-only">Password</label>-->
             <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
             <div class="checkbox">
                 <label>
@@ -64,7 +65,7 @@ if (isset($_GET['login'])) {
                 <input type="radio" name="usertype" value="player">Player
                 </label>
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <button type="submit">Sign in</button>
         </form>
     </div>
 </div>

@@ -2,7 +2,8 @@
     <title>Test</title>
 
     <!-- Google fonts-->
-    <link href='http://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='commonstyles.css' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
