@@ -1,9 +1,8 @@
 <head>
-    <title>Player Bios</title>
+    <title>Player: Roll Fizzlebeef</title>
 
     <link rel="stylesheet" type="text/css" href="players.css">
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
-	<script src="tab-content/tabcontent.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -85,7 +84,26 @@
 								</div>
 							</div>
 							<div class="space">
-								Here is the video and stats
+								<div class="leftbox">
+									<img class="vid" src="images/4by3.jpg">
+								</div>
+								<div class="rightbox">
+									<p>
+										 Stat 1: <br><br>
+										 Stat 2: <br><br>
+										 Stat 3: <br><br>
+										 Stat 4: <br><br>
+										 Stat 5: <br><br>
+										 Stat 6: <br><br>
+										 Stat 7: <br><br>
+										 Stat 8: <br><br>
+										 Stat 9: <br><br>
+								</div>
+								<div class="commentbox">
+									<p>
+										Here would be some comments <br><br>
+									</p>
+								</div>
 							</div>
 						</div>
 						

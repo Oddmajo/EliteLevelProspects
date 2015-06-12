@@ -27,7 +27,7 @@
 	background-color: #111111;
 	border: solid;
 	border-color: white;
-	height: 800px;
+	height: 1200px;
 }
 .tabbar{
 	background-color: #333333;
@@ -60,7 +60,7 @@
     display: block;
 }
 .sspace {
-    margin: 15px;
+    margin: 10px;
     display: block;
 }
 
@@ -79,17 +79,25 @@
 
 .leftbox{
 	float: left;
-	width: 49.5%;
+	width: 66%;
 	border: solid;
 	border-color: #333333;
-	height: 600px;
+	height: 584px;
 }
 .rightbox{
 	float: right;
-	width: 49.5%;
+	width: 33%;
 	border: solid;
 	border-color: #333333;
-	height: 600px;
+	height: 584px;
+}
+.commentbox{
+	float: left;
+	margin-top: 10px;
+	width: 100%;
+	border: solid;
+	border-color: #333333;
+	height: 450px;
 }
 
 img.players {
@@ -120,6 +128,7 @@ h1.small{
 	font-size: 90%;
 }
 p {
+	margin-left: 5px;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 16pt;
     line-height: 150%;
