@@ -8,8 +8,8 @@
     <div class="navbar-column"><img src="images/logo small final.png" alt="Elite Level Prospects" width="60" height="56"></div>
     <div class="navbar-column"><a href="home-main.php">Home</a></div>
     <div class="navbar-column"><a href="forum.php">Coaches Forum</a></div>
-    <div class="navbar-column"><a href="test.php">Scouts</a></div>
-    <div class="navbar-column"><a href="test.php">Top Prospects</a></div>
+    <div class="navbar-column"><a href="forum.php">Scouts</a></div>
+    <div class="navbar-column"><a href="players.php">Top Prospects</a></div>
     <div class="navbar-column"><a href="test.php">About</a></div>
     <div class="navbar-column">
         <?php

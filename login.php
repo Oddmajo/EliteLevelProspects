@@ -28,7 +28,7 @@ if (isset($_GET['login'])) {
             unset($_SESSION['dest']);
             header("Location: " . $dest);
         } else
-            header("Location: home.php");//($usertype == 'coach' ? "forum.php" : "players.php"));
+            header("Location: home-main.php");//($usertype == 'coach' ? "forum.php" : "players.php"));
         exit;
     } else { ?>
         <!-- Tell the user their password was incorrect -->
