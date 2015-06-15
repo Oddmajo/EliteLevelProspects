@@ -6,13 +6,13 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    background: linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,0));
+    background: linear-gradient(#333333, black);
 }
 
 /* A column of the navbar (for links, logos, etc.). Uses a flexbox to vertically center children. */
 .navbar-column {
-    height: 100px;
-    margin: 0px 15px;
+    height: 70px;
+    margin: 0px 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,8 +24,8 @@
     font-weight: normal;
     font-family: 'Pathway Gothic One', sans-serif;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.75);
-    padding-bottom: 5px;
+    color: rgba(255,255,255,1);
+    padding: 5px 0;
     border-bottom: 2px solid transparent;
 }
 .navbar-column > a:hover,

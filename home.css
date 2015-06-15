@@ -5,6 +5,11 @@ body {
   background-repeat: no-repeat;
 }
 
+video {
+    width: 100%;
+    height: auto;
+}
+
 /* The content container. Any page content (text, images, etc.) should go in here. Uses a flexbox to horizontally lay out children. */
 .cover-container {
     width: 100%;
