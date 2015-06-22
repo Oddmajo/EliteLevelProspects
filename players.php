@@ -3,6 +3,7 @@
 
     <link rel="stylesheet" type="text/css" href="players.css">
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+	<script src="tabcontent.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -44,7 +45,11 @@
 					<div class="basestatistics">
 						<div class="space">
 							<p>
-								Here is where the stats will be
+								Stat 1:  <br><br>
+								Stat 2:  <br><br>
+								Stat 3:  <br><br>
+								Stat 4:  <br><br>
+								Stat 5:  <br><br>
 							</p>
 						</div>
 					</div>
@@ -53,63 +58,101 @@
 				</div>
 			</div>
 			<div class="sspace">
-				<div class="tabbar">
-					<div class="tabbar-tab4">
-						Videos
-					</div>
-					<div class="tabbar-tab4">
-						Analysis
-					</div>
-					<div class="tabbar-tab4">
-						Projections
-					</div>
-					<div class="tabbar-tab4">
-						Misc
-					</div>
-				</div>
+				<ul class="tabs">
+					<li><a href="#vids">Videos</a></li>
+					<li><a href="#anal">Analysis</a></li>
+					<li><a href="#project">Projections</a></li>
+					<li><a href="#misc">Misc</a></li>
+					<li class="selected"><a href="#default">Bio</a></li>
+				</ul>
 			</div>
-			<div class="tabbedsegment">
-				<div class="space">
-					<div class="tabcontents">
-						<div id="videos">
-							<div class="tabbar">
-								<div class="tabbar-tab3">
-									Batting
+			<div class="tabcontents">
+				<div id="default">
+				</div>
+					<div id="vids">
+						<div class="tabbedsegment">
+							<ul class="tabs">
+								<li><a href="#bat1">Hitting</a></li>
+								<li><a href="#ball1">Pitching/Fielding</a></li>
+								<li><a href="#run1">Running</a></li>
+							</ul>
+							<div class="tabcontent" padding="30px">
+								<div id="bat1">
+									Test 1.1
 								</div>
-								<div class="tabbar-tab3">
-									Pitching
+								<div id="ball1">
+									Test 1.2
 								</div>
-								<div class="tabbar-tab3">
-									Running
-								</div>
-							</div>
-							<div class="space">
-								<div class="leftbox">
-									<img class="vid" src="images/4by3.jpg">
-								</div>
-								<div class="rightbox">
-									<p>
-										 Stat 1: <br><br>
-										 Stat 2: <br><br>
-										 Stat 3: <br><br>
-										 Stat 4: <br><br>
-										 Stat 5: <br><br>
-										 Stat 6: <br><br>
-										 Stat 7: <br><br>
-										 Stat 8: <br><br>
-										 Stat 9: <br><br>
-								</div>
-								<div class="commentbox">
-									<p>
-										Here would be some comments <br><br>
-									</p>
+								<div id="run1">
+									Test 1.3
 								</div>
 							</div>
 						</div>
-						
-					</div>
-				</div>
+						</div>
+						<div id="anal">
+						<div class="tabbedsegment">
+							<ul class="tabs">
+								<li><a href="#bat2">Hitting</a></li>
+								<li><a href="#ball2">Pitching/Fielding</a></li>
+								<li><a href="#run2">Running</a></li>
+							</ul>
+							<div class="tabcontent">
+								<div id="bat2">
+									Test 2.1
+								</div>
+								<div id="ball2">
+									Test 2.2
+								</div>
+								<div id="run2">
+									Test 2.3
+								</div>
+							</div>
+						</div>
+						</div>
+						<div id="project">
+						<div class="tabbedsegment">
+							<ul class="tabs">
+								<li><a href="#bat3">Hitting</a></li>
+								<li><a href="#ball3">Pitching/Fielding</a></li>
+								<li><a href="#run3">Running</a></li>
+							</ul>
+							<div class="tabcontent">
+								<div id="bat3">
+									Test 3.1
+								</div>
+								<div id="ball3">
+									Test 3.2
+								</div>
+								<div id="run3">
+									Test 3.3
+								</div>
+							</div>
+						</div>
+						</div>
+						<div id="misc">
+						<div class="tabbedsegment">
+							<ul class="tabs">
+								<li><a href="#bat4">Hitting</a></li>
+								<li><a href="#ball4">Pitching/Fielding</a></li>
+								<li><a href="#run4">Running</a></li>
+							</ul>
+							<div class="tabcontent">
+								<div id="bat4">
+									Test 4.1
+								</div>
+								<div id="ball4">
+									Test 4.2
+								</div>
+								<div id="run4">
+									Test 4.3
+								</div>
+							</div>
+						</div>
+						</div>
+				
+				
 			</div>
+			
 		</div>
 		
 		

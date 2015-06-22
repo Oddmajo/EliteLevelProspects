@@ -53,7 +53,52 @@
     width: 33%;
 }
 
+ul.tabs{
+    padding: 7px 0;
+    font-size: 0;
+    margin:0;
+    list-style-type: none;
+    text-align: center; /*set to left, center, or right to align the tabs as desired*/
+	display: flex;
+	justify-content: center;
+}
+ul.tabs li{
+    display: flex;
+	flex-direction: column;
+	justify-content: center;
+    margin: 0;
+    margin-right: 150px; /*distance between tabs*/
+	margin-left: 150px
+}
+ul.tabs li a{
+    font: normal 16px Verdana;
+    text-decoration: none;
+    position: relative;
+    color: white;
+	border-bottom: 1px solid white;
+}
+ul.tabs li a:visited{
+    color: white;
+}
+ul.tabs li a:hover{
+color: #029EDC;
+}
+ul.tabs li.selected a, ul.tabs li.selected a:hover{
+    position: relative;
+    top: 0px;
+    font-weight:bold;
+	color: #029EDC;
+}       
+ul.tabs li.selected a:hover{
+    text-decoration: none;
+}
+div.tabcontents{
+    padding: 0px;
+}
 
+div.tabcontent{
+    padding: 30px;
+}
 
 .space {
     margin: 25px;
