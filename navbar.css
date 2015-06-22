@@ -1,36 +1,18 @@
-/* The navigation bar. Uses a flexbox to horizontally lay out children. */
-.navbar {
-    top: 0px; /* This fixes an issue where the header's margin was setting itself to the content's */
-    position: fixed;
-    z-index: 1;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    background: linear-gradient(#333333, black);
+body {
+  padding-top: 50px;
 }
 
-/* A column of the navbar (for links, logos, etc.). Uses a flexbox to vertically center children. */
-.navbar-column {
-    height: 70px;
-    margin: 0px 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.navbar-column > a {
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: normal;
-    font-family: 'Pathway Gothic One', sans-serif;
+.navbar-brand {
     text-transform: uppercase;
-    color: rgba(255,255,255,1);
-    padding: 5px 0;
-    border-bottom: 2px solid transparent;
+    font-family: 'Russo One', sans-serif;
+    font-size: 25px;
+    font-style: italic;
 }
-.navbar-column > a:hover,
-.navbar-column > a:focus {
-    background-color: transparent;
-    color: white;
-    border-bottom-color: rgba(255,255,255,.25);
+
+.nav.navbar-nav > li > a {
+    padding-left: 20px;
+    padding-right: 20px;
+    text-transform: uppercase;
+    font-family: "Pathway Gothic One", sans-serif;
+    font-size: 20px;
 }

@@ -1,9 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="Jacob Nash">
+
     <title>Player: Roll Fizzlebeef</title>
 
-    <link rel="stylesheet" type="text/css" href="players.css">
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap/css/dropdown.css" rel="stylesheet">
+
+    <!-- Custom styles -->
+    <link href="commonstyles.css" rel="stylesheet" type="text/css">
+    <link href="players.css" rel="stylesheet" type="text/css">
+
 	<script src="tabcontent.js" type="text/javascript"></script>
+
+    <script src="bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
 </head>
 
 <body>
@@ -41,7 +58,7 @@
 							Here would be additional choices for media
 						</div>
 					</div>
-					
+
 					<div class="basestatistics">
 						<div class="space">
 							<p>
@@ -54,7 +71,7 @@
 						</div>
 					</div>
 
-					
+
 				</div>
 			</div>
 			<div class="sspace">
@@ -149,15 +166,15 @@
 							</div>
 						</div>
 						</div>
-				
-				
+
+
 			</div>
-			
+
 		</div>
-		
-		
-		
-		
+
+
+
+
 	</div>
 	<div class="bg-right">
 		<div class="space">
@@ -167,4 +184,11 @@
 			</div>
 	</div>
     </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>

@@ -1,22 +1,93 @@
+<?php
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+?>
+
 <head>
-    <link href="layout.css" rel="stylesheet" type="text/css">
     <link href="navbar.css" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Oswald|Pathway+Gothic+One' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Russo+One|Pathway+Gothic+One' rel='stylesheet' type='text/css'>
 </head>
 
-<div class="navbar">
-    <div class="navbar-column"><img src="images/logo small final.png" alt="Elite Level Prospects" width="60" height="56"></div>
-    <div class="navbar-column"><a href="home-main.php">Home</a></div>
-    <div class="navbar-column"><a href="forum.php">Coaches Forum</a></div>
-    <div class="navbar-column"><a href="forum.php">Scouts</a></div>
-    <div class="navbar-column"><a href="players.php">Top Prospects</a></div>
-    <div class="navbar-column"><a href="test.php">About</a></div>
-    <div class="navbar-column">
-        <?php
-        if (isset($_SESSION['username'])) { ?>
-            <a href="account.php">My Account</a>
-        <?php } else { ?>
-            <a href="login.php">Sign In</a>
-        <?php } ?>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="home.php">Elite Level Prospects</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="home.php">Home</a></li>
+                <li><a href="forum.php">Coaches Forum</a></li>
+                <li><a href="forum.php">Trainers</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Prospects <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="players.php">Player Bios</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Graduation Year</li>
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="#">2018</a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-header">Specialty</li>
+                                <li><a href="#">Hitting</a></li>
+                                <li><a href="#">Pitching</a></li>
+                                <li><a href="#">Speed</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="#">2017</a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-header">Specialty</li>
+                                <li><a href="#">Hitting</a></li>
+                                <li><a href="#">Pitching</a></li>
+                                <li><a href="#">Speed</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="#">2016</a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-header">Specialty</li>
+                                <li><a href="#">Hitting</a></li>
+                                <li><a href="#">Pitching</a></li>
+                                <li><a href="#">Speed</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="#">2015</a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-header">Specialty</li>
+                                <li><a href="#">Hitting</a></li>
+                                <li><a href="#">Pitching</a></li>
+                                <li><a href="#">Speed</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="about.php">About</a></li>
+                <?php
+                if (isset($_SESSION['username'])) {
+                    $username = $_SESSION['username'];
+                    ?>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $username; ?> <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="account.php">My Account</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Nav header</li>
+                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                <?php } else { ?>
+                    <li><a href="login.php">Sign In</a></li>
+                <?php } ?>
+            </ul>
+        </div>
     </div>
-</div>
+</nav>

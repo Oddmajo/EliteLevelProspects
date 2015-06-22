@@ -2,26 +2,11 @@
 This css file makes it easier to design layouts for webpages. It uses CSS3's new Flexbox feature.
 */
 
-/* The body style. Gets rid of extra borders at the edges of the screen. */
-body {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    color: white;
-    background-color: #494949;
-}
-
 /* This makes the border and padding of every element take up its width, instead of only the inner content taking up its width. */
-* {
+.border-box {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
-}
-
-.box-sizing-content {
-    -webkit-box-sizing: content-box;
-       -moz-box-sizing: content-box;
-            box-sizing: content-box;
 }
 
 /* The content container. Any page content (text, images, etc.) should go in here. Uses a flexbox to horizontally lay out children. */

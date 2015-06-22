@@ -1,16 +1,4 @@
 body {
-    font-family: 'Open Sans';
-}
-
-h2 {
-    font-family: 'Open Sans';
-    font-weight: normal;
-}
-
-button {
-    padding: 5px 10px;
-    background-color: white;
-    border: 3px solid white;
-    border-radius: 3px;
-    font-weight: bold;
+    color: white;
+    background-color: #333333;
 }
