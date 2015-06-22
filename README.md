@@ -25,3 +25,6 @@ If you're using Bootstrap in a page then you also need to include some JS files 
 
 ## Fonts
 Some of the pages use Google Fonts. These are font files hosted by Google. To include them in a page, just link the correct CSS file URL and then set the font-family attribute in your custom CSS file. navbar.php automatically includes the two fonts it uses, so that's where those are set if you were wondering.
+
+## Common Styles
+Pretty much every page except the home page should use the same basic style. This style is in commonstyles.css and can be overriden by per-page styles for more control. All this stylesheet does right now is make the background dark gray and the text white.
