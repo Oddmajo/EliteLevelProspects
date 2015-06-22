@@ -1,0 +1,22 @@
+## Bootstrap
+Each page that uses the navbar must have Bootstrap loaded in the HEAD tag. This means loading the Bootstrap CSS file, the dropdown CSS file, and a JS file:
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap/css/dropdown.css" rel="stylesheet">
+    
+    <!-- Custom styles for the current page go here -->
+    
+    <script src="bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
+
+If you're using Bootstrap in a page then you also need to include some JS files at the end of the BODY tag:
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+## Fonts
+Some of the pages use Google Fonts. These are font files hosted by Google. To include them in a page, just link the correct CSS file URL and then set the font-family attribute in your custom CSS file. navbar.php automatically includes the two fonts it uses, so that's where those are set if you were wondering.
