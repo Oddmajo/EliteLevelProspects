@@ -56,7 +56,7 @@
                     <div class="carousel-caption">
                         <h1>Hitting</h1>
                         <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                        <p><a class="btn btn-lg btn-primary" href="players.php" role="button">Learn more</a></p>
                     </div>
                 </div>
             </div>
@@ -66,7 +66,7 @@
                     <div class="carousel-caption">
                         <h1>Fielding</h1>
                         <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                        <p><a class="btn btn-lg btn-primary" href="players.php" role="button">Learn more</a></p>
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
                     <div class="carousel-caption">
                         <h1>Pitching</h1>
                         <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                        <p><a class="btn btn-lg btn-primary" href="players.php" role="button">Learn more</a></p>
                     </div>
                 </div>
             </div>
@@ -86,7 +86,7 @@
                     <div class="carousel-caption">
                         <h1>Coaches Forum</h1>
                         <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                        <p><a class="btn btn-lg btn-primary" href="forum.php" role="button">Learn more</a></p>
                     </div>
                 </div>
             </div>
@@ -96,7 +96,7 @@
                     <div class="carousel-caption">
                         <h1>Prospects</h1>
                         <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                        <p><a class="btn btn-lg btn-primary" href="players.php" role="button">Learn more</a></p>
                     </div>
                 </div>
             </div>
@@ -110,7 +110,7 @@
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-        <img class="logo" src="images/logo.png" width="150" height="143" alt="Elite Level Prospects">
+        <img class="logo" src="images/logo metal.png" width="200" height="171" alt="Elite Level Prospects">
     </div>
 
     <div class="container marketing">
@@ -118,19 +118,19 @@
     <!-- Three columns of text below the carousel -->
     <div class="row">
         <div class="col-lg-4">
-            <h2>Heading</h2>
+            <h2>Our Mission</h2>
             <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-default" href="about.php#foo" role="button">View details &raquo;</a></p>
         </div>
         <div class="col-lg-4">
-            <h2>Heading</h2>
+            <h2>Five-Tool Model</h2>
             <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-default" href="about.php" role="button">View details &raquo;</a></p>
         </div>
         <div class="col-lg-4">
-            <h2>Heading</h2>
+            <h2>Find a Facility</h2>
             <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-default" href="about.php" role="button">View details &raquo;</a></p>
         </div>
     </div>
 
