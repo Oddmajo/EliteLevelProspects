@@ -2,6 +2,13 @@
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
+
+    function addActiveIfOnPage($requestUri) {
+        $current_file_name = basename($_SERVER['REQUEST_URI'], ".php");
+
+        if ($current_file_name == $requestUri)
+            echo ' active';
+    }
 ?>
 
 <head>
@@ -20,7 +27,7 @@
             </button>
             <a class="navbar-brand" href="home.php">Elite Level Prospects</a>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
+        <div id="navbar" class="collapse navbar-collapse" role="navigation">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="home.php">Home</a></li>
                 <li><a href="forum.php">Coaches Forum</a></li>

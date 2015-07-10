@@ -14,7 +14,11 @@
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/dropdown.css" rel="stylesheet">
 
+    <!-- Magnific Popup core CSS file -->
+    <link rel="stylesheet" href="magnific-popup/magnific-popup.css">
+
     <!-- Custom styles for this template -->
+    <link href="commonstyles.css" rel="stylesheet" type="text/css">
     <link href="home.css" rel="stylesheet">
 
     <script src="bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
@@ -24,6 +28,14 @@
     <?php
         include_once('navbar.php');
     ?>
+
+    <div id="popup-with-something" class="mfp-hide">
+        <div class="some-element">
+            <video width="1280" height="720" preload="auto" controls>
+                <source src="videos/000020191102_HDHTML5Video.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
 
     <!-- Carousel -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -44,9 +56,9 @@
                 </video>
                 <div class="container">
                     <div class="carousel-caption">
-                        <h1>The most accurate baseball recruiting website in the midwest</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Watch video</a></p>
+                        <h1>The most accurate baseball recruiting website<br>in the midwest</h1>
+                        <p>Other recruiting websites are clunky, outdated, and don't say enough about you. Scouts need a website where they can easily see the best players in the area and what their strengths are. That's where we come in.</p>
+                        <p><a class="watch-video-link btn btn-lg btn-primary" href="#popup-with-something">Watch video</a><!--<a class="btn btn-lg btn-primary" href="#" role="button">Watch video</a>--></p>
                     </div>
                 </div>
             </div>
@@ -55,7 +67,7 @@
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>Hitting</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        <p>They say you can never stop improving. But when you're done training with us, you'll be hitting it out of the park every time you step up to bat.</p>
                         <p><a class="btn btn-lg btn-primary" href="players.php" role="button">Learn more</a></p>
                     </div>
                 </div>
@@ -65,7 +77,7 @@
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>Fielding</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        <p>Playing well in the outfield is just as important as hitting well. We'll help you improve your fielding skills with customized exercises designed to make you work for it.</p>
                         <p><a class="btn btn-lg btn-primary" href="players.php" role="button">Learn more</a></p>
                     </div>
                 </div>
@@ -75,7 +87,7 @@
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>Pitching</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        <p>Pitchers can control the direction of a game. With us, you'll learn all you need to strike out anyone who comes up to the plate.</p>
                         <p><a class="btn btn-lg btn-primary" href="players.php" role="button">Learn more</a></p>
                     </div>
                 </div>
@@ -85,7 +97,7 @@
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>Coaches Forum</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        <p>We don't just cater to the players. Scouts and coaches get their own private area to discuss prospective players and share what they're looking for.</p>
                         <p><a class="btn btn-lg btn-primary" href="forum.php" role="button">Learn more</a></p>
                     </div>
                 </div>
@@ -95,7 +107,7 @@
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>Prospects</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        <p>Every time you train at our facilities, we'll update your profile and send coaches and scouts notifications about the areas you've improved in. We'll also rank local players using our unique formula that will help you stand out from the crowd.</p>
                         <p><a class="btn btn-lg btn-primary" href="players.php" role="button">Learn more</a></p>
                     </div>
                 </div>
@@ -119,17 +131,17 @@
     <div class="row">
         <div class="col-lg-4">
             <h2>Our Mission</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+            <p>We want to make you the best you can be. As you train with us and improve, your stats are updated in real-time on our site. Baseball scouts get access to a list of the best players in your area. Make sure you're on that list!</p>
             <p><a class="btn btn-default" href="about.php#foo" role="button">View details &raquo;</a></p>
         </div>
         <div class="col-lg-4">
             <h2>Five-Tool Model</h2>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+            <p>Running speed. Arm strength. Hitting for average. Hitting for power. Fielding. We rank you and your peers using our own formula that incorporates all five of these key statistics.</p>
             <p><a class="btn btn-default" href="about.php" role="button">View details &raquo;</a></p>
         </div>
         <div class="col-lg-4">
             <h2>Find a Facility</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p>Part of doing your best is training hard. We currently have 1 training facility located in Peoria, IL. Stop in for a session any time, no need for a membership--but if you want to get the word out, create an account and we'll update your profile after every training session.</p>
             <p><a class="btn btn-default" href="about.php" role="button">View details &raquo;</a></p>
         </div>
     </div>
@@ -140,5 +152,24 @@
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- Magnific Popup core JS file -->
+    <script src="magnific-popup/jquery.magnific-popup.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.watch-video-link').magnificPopup({
+                type: 'inline',
+                midClick: true,
+                mainClass: 'custom-popup-class'
+            	// other options
+            });
+        });
+
+        $(".nav a").on("click", function(){
+            $(".nav").find(".active").removeClass("active");
+            $(this).parent().addClass("active");
+        });
+    </script>
 </body>
 </html>
