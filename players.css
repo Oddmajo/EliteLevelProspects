@@ -15,46 +15,45 @@
     float: right;
     background-size: cover;
 }
-.content{
-	background-color: #444444;
+body{
+	background-image:  url(images/diamond.jpg);
 }
 
 
 .basesegment{
 	background-color: #111111;
 	border: solid;
-	border-color: white;
+	border-color: #333333;
 	height: 450px;
 }
 .tabbedsegment{
 	background-color: #111111;
 	border: solid;
-	border-color: white;
+	border-color: #333333;
 	height: 650px;
 }
-.tabbar{
-	background-color: #333333;
+
+.leftbox{
+	float: left;
+	width: 66%;
+	height: 480px;
+}
+.rightbox{
+	float: right;
+	width: 30%;
+	height: 480px;
+	margin: 10px;
+	
+}
+.commentbox{
+	background-color: #111111;
 	border: solid;
-	border-color: white;
-	height: 50px;
-	color: white;
-	display: flex;
-	justify-content: center;
+	border-color: #333333;
+	margin-top: 25px;
+	height: 300px;
 }
-.tabbar-tab4{
-	display: flex;
-	text-align: center;
-	flex-direction: column;
-	justify-content: center;
-    width: 24.75%;
-}
-.tabbar-tab3{
-	display: flex;
-	text-align: center;
-	flex-direction: column;
-	justify-content: center;
-    width: 33%;
-}
+
+
 
 ul.tabs{
     /*padding: 7px 0;*/
@@ -128,26 +127,6 @@ div.tabcontent{
 	float: right;
 }
 
-.leftbox{
-	float: left;
-	width: 66%;
-	height: 480px;
-}
-.rightbox{
-	float: right;
-	width: 30%;
-	height: 480px;
-	margin: 10px;
-	
-}
-.commentbox{
-	background-color: #111111;
-	border: solid;
-	border-color: white;
-	margin-top: 25px;
-	height: 300px;
-}
-
 img.players {
     width: 100%;
 	border: solid;
@@ -157,6 +136,9 @@ img.vid{
 	width: 100%;
 	border: solid;
 	border-color: #333333;
+}
+img.sidebar{
+	height: 25px;
 }
 
 h1 {
@@ -180,10 +162,30 @@ h1.small{
 	border: solid #333333;
 	border-top: none;
 	color: white;
-	background-color: black;
+	background-color: #111111;
 	font-size: 90%;
 	font-family: 'Russo One', sans-serif;
 	text-transform: uppercase;
+}
+
+ul.sidebar{
+	width:100%;
+	margin-bottom:20px;
+	padding: 10px;
+	overflow:hidden;
+}
+ul.sidebar > li{
+	background-color: #111111;
+	border: 1px solid #333333;
+	width: 100%;
+	font-family: 'Lato', sans-serif;
+	padding: 5px;
+	font-size: 12pt;
+	line-height:1.5em;
+	float:left;
+	display:inline;
+	margin-bottom: 15px;
+	color: white;
 }
 
 ul.profile{
@@ -194,13 +196,26 @@ ul.profile{
   border-top:1px solid #444444;
   border-bottom:1px solid #444444;
 }
-ul.profile > li{
+ul.profile > li.cat{
+	width: 25%;
 	font-family: 'Lato', sans-serif;
 	padding-bottom: 5px;
 	font-size: 18pt;
 	line-height:1.5em;
 	float:left;
 	display:inline;
+	color: #adadad;
+}
+ul.profile > li.stat{
+	width: 25%;
+	font-family: 'Lato', sans-serif;
+	padding-bottom: 5px;
+	font-size: 18pt;
+	line-height:1.5em;
+	float:left;
+	display:inline;
+	text-decoration: bold;
+	color: white;
 }
 
 ul.stats{
@@ -210,21 +225,27 @@ ul.stats{
   border-top:1px solid #444444;
   border-bottom:1px solid #444444;
 }
-ul.stats > li{
+ul.stats > li.cat{
+	width: 100%;
 	font-family: 'Lato', sans-serif;
 	padding: 5px;
 	font-size: 16pt;
 	line-height:1.5em;
 	float:left;
 	display:inline;
+	color: #adadad;
 }
-ul.stats > li{
+ul.stats > li.stat{
+	width: 100%;
+	color: white;
+	text-decoration: bold;
 	font-family: 'Lato', sans-serif;
 	padding: 5px;
 	font-size: 16pt;
 	line-height:1.5em;
 	float:left;
 	display:inline;
+	margin-bottom: 25px;
 }
 
 ul.name{
@@ -238,6 +259,7 @@ ul.name{
   
 }
 ul.name > li{
+	width: 33%;
 	background-color: #029EDC;
 	padding: 5px;
 	font-size: 16pt;
@@ -246,10 +268,7 @@ ul.name > li{
 	display:inline;
 	text-align: center;
 }
-#single li { width:100%;}
-#double li { width:50%;}
-#triple li { width:33%;}
-#quadruple li { width:25%;}
+
 
 
 

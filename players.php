@@ -38,19 +38,19 @@
     <div class="content">
 	<div class="bg-left">
 		<div class="space">
-			<img class="players" src="images/hitter.jpg">
+			<img class="players" src="images/coach.jpg">
 			<?php
                     $username = $_SESSION['username'];
 			?>
 			<h1 class="small">
 				<?php echo $username; ?>
 			</h1>
-			<ul class="profile" id="single">
-				<li>1</li>
-				<li>2</li>
-				<li>3</li>
-				<li>4</li>
-				<li>5</li>
+			<ul class="sidebar">
+				<li><img class ="sidebar" src="images/hitter.jpg"> Roll Fizzlebeef</li>
+				<li><img class ="sidebar" src="images/hitter.jpg"> Big McLargehuge</li>
+				<li><img class ="sidebar" src="images/hitter.jpg"> Joel Macklehit</li>
+				<li><img class ="sidebar" src="images/hitter.jpg"> Two Legs Johnny</li>
+				<li><img class ="sidebar" src="images/hitter.jpg"> One Leg Jerry</li>
 			</ul>
 		</div>
 	</div>
@@ -75,27 +75,27 @@
 					
 					<div class="basestatistics">
 						<div class="space">
-							<ul class="profile"id="quadruple">
-								<li style="color:#adadad;">Height: </li>
-								<li><b>6'4"</b></li>
-								<li style="color:#adadad;">Weight: </li>
-								<li><b>200 lbs</b></li>
-								<li style="color:#adadad;">Age: </li>
-								<li><b>18</b></li>
-								<li style="color:#adadad;">School: </li>
-								<li><b>Hard Knocks</b></li>
-								<li style="color:#adadad;">Year: </li>
-								<li><b>2016</b></li>
-								<li style="color:#adadad;">City: </li>
-								<li><b>P-town</b></li>
-								<li style="color:#adadad;">Rank: </li>
-								<li><b>-1</b></li>
-								<li style="color:#adadad;">State: </li>
-								<li><b>Illinois</b></li>
-								<li style="color:#adadad;">GPA: </li>
-								<li><b>5.0</b></li>
-								<li style="color:#adadad;">ACT Score: </li>
-								<li><b>36</b></li>
+							<ul class="profile">
+								<li class="cat">Height: </li>
+								<li class="stat">6'4"</li>
+								<li class="cat">Weight: </li>
+								<li class="stat">200 lbs</li>
+								<li class="cat">Age: </li>
+								<li class="stat">18</li>
+								<li class="cat">School: </li>
+								<li class="stat">Hard Knocks</li>
+								<li class="cat">Year: </li>
+								<li class="stat">2016</li>
+								<li class="cat">City: </li>
+								<li class="stat">P-town</li>
+								<li class="cat">Rank: </li>
+								<li class="stat">-1</li>
+								<li class="cat">State: </li>
+								<li class="stat">Illinois</li>
+								<li class="cat">GPA: </li>
+								<li class="stat">5.0</li>
+								<li class="cat">ACT Score: </li>
+								<li class="stat">36</li>
 							</ul>
 						</div>
 						<ul class="tabs">
@@ -130,18 +130,15 @@
 										<iframe width="100%" height="480" src="https://www.youtube.com/embed/wlXuqdzA1nY" frameborder="0" allowfullscreen></iframe>
 									</div>
 									<div class="rightbox">
-										<ul class="stats"id="single">
-											<li>Bat Percentage:</li>
-											<li>110%</li>
-											<li>&nbsp;</li>
-											<li>Bat Speed:</li>
-											<li>Mach 10</li>
-											<li>&nbsp;</li>
-											<li>Stat 3:</li>
-											<li>numbers</li>
-											<li>&nbsp;</li>
-											<li>Stat 4:</li>
-											<li>numbers</li>
+										<ul class="stats">
+											<li class="cat">Stat 1:</li>
+											<li class="stat">numbers</li>
+											<li class="cat">Stat 2:</li>
+											<li class="stat">numbers</li>
+											<li class="cat">Stat 3:</li>
+											<li class="stat">numbers</li>
+											<li class="cat">Stat 4:</li>
+											<li class="stat">numbers</li>
 										</ul>
 									</div>
 								<!--</div>-->
@@ -152,18 +149,15 @@
 										<iframe width="100%" height="480" src="https://www.youtube.com/embed/wlXuqdzA1nY" frameborder="0" allowfullscreen></iframe>
 									</div>
 									<div class="rightbox">
-										<ul class="stats"id="single">
-											<li>Stat 1:</li>
-											<li>numbers</li>
-											<li>&nbsp;</li>
-											<li>Stat 2:</li>
-											<li>numbers</li>
-											<li>&nbsp;</li>
-											<li>Stat 3:</li>
-											<li>numbers</li>
-											<li>&nbsp;</li>
-											<li>Stat 4:</li>
-											<li>numbers</li>
+										<ul class="stats">
+											<li class="cat">Stat 1:</li>
+											<li class="stat">numbers</li>
+											<li class="cat">Stat 2:</li>
+											<li class="stat">numbers</li>
+											<li class="cat">Stat 3:</li>
+											<li class="stat">numbers</li>
+											<li class="cat">Stat 4:</li>
+											<li class="stat">numbers</li>
 										</ul>
 									</div>
 								<!--</div>-->
@@ -174,18 +168,15 @@
 										<iframe width="100%" height="480" src="https://www.youtube.com/embed/wlXuqdzA1nY" frameborder="0" allowfullscreen></iframe>
 									</div>
 									<div class="rightbox">
-										<ul class="stats"id="single">
-											<li>Stat 1:</li>
-											<li>numbers</li>
-											<li>&nbsp;</li>
-											<li>Stat 2:</li>
-											<li>numbers</li>
-											<li>&nbsp;</li>
-											<li>Stat 3:</li>
-											<li>numbers</li>
-											<li>&nbsp;</li>
-											<li>Stat 4:</li>
-											<li>numbers</li>
+										<ul class="stats">
+											<li class="cat">Stat 1:</li>
+											<li class="stat">numbers</li>
+											<li class="cat">Stat 2:</li>
+											<li class="stat">numbers</li>
+											<li class="cat">Stat 3:</li>
+											<li class="stat">numbers</li>
+											<li class="cat">Stat 4:</li>
+											<li class="stat">numbers</li>
 										</ul>
 									</div>
 								<!--</div>-->
@@ -301,10 +292,13 @@
 	</div>
 	<div class="bg-right">
 		<div class="space">
-			<h1 class="small">
-			Right margin
-			</h1>
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="Search Prospects">
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button">Go!</button>
+				</span>
 			</div>
+		</div>
 	</div>
     </div>
 
