@@ -15,7 +15,7 @@
     <link href="bootstrap/css/dropdown.css" rel="stylesheet">
 
     <!-- Custom styles -->
-    <link href="commonstyles.css" rel="stylesheet" type="text/css">
+    <!--<link href="commonstyles.css" rel="stylesheet" type="text/css">-->
     <link href="forum.css" rel="stylesheet" type="text/css">
 
     <script src="bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
@@ -27,19 +27,81 @@
         require('protected.php');
         include_once('navbar.php');
     ?>
-    <div class="content">
-    <div class="bg-left">
-    	<div class="space">
-    		<h1 class="small">
-    			This will be the user profile
-    		</h2>
-    	</div>
+<div class="custom-container">
+<div class="row">
+<div class="col-md-2">
+    This will be the user profile
+</div>
+<div class="col-md-8">
+    <div class="alert alert-success" role="alert">
+        Stay up to date on athletes that other coaches are following or promoting!
+        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     </div>
 
-    <div class = "main">
-    	<h1 class="light">
-    	Stay up to date on athletes that other coaches are following or promoting
-    	</h1>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="media-left">
+                <img class="media-object" src="images/hitter.jpg" width="64" height="64">
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">One of my athletes just hit 2 home runs in a single game</h4>
+                Lorem ipsum dolor sit amet, sit blandit adipisci adversarium in. Mucius nemore ceteros duo cu, iuvaret facilisi principes cum no, cu sumo tibique postulant has. In hinc epicurei eos. Per suas diceret nusquam ne, eu denique repudiandae sea. Vis ei esse honestatis. Labitur iuvaret fastidii eum no. His civibus definiebas vituperatoribus cu, ex fastidii suscipiantur sea, vel ne quando viderer.
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default">Show comments (4)</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <a href="players.php" role="button" class="btn btn-default">Go to player bio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="media-left">
+                <img class="media-object" src="images/pitcher.jpg" width="64" height="64">
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">I just scouted a game where this kid threw a near-perfect game</h4>
+                Lorem ipsum dolor sit amet, sit blandit adipisci adversarium in. Mucius nemore ceteros duo cu, iuvaret facilisi principes cum no, cu sumo tibique postulant has. In hinc epicurei eos. Per suas diceret nusquam ne, eu denique repudiandae sea. Vis ei esse honestatis. Labitur iuvaret fastidii eum no. His civibus definiebas vituperatoribus cu, ex fastidii suscipiantur sea, vel ne quando viderer.
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default">Show comments (4)</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <a href="players.php" role="button" class="btn btn-default">Go to player bio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-2">
+    <h4>Options</h4>
+    <form>
+        <div class="checkbox">
+            <label><input type="checkbox">Check me out</label>
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox">Check me out</label>
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox">Check me out</label>
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox">Check me out</label>
+        </div>
+    </form>
+</div>
+</div>
+</div>
+        <!--
     	<div class="space">
     		<div class="post">
     			<div class="space">
@@ -98,7 +160,7 @@
     	</div>
     </div>
     </div>
-
+-->
     <!-- Bootstrap core JavaScript -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

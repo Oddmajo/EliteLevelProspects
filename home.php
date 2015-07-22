@@ -32,7 +32,7 @@
     <div id="popup-with-something" class="mfp-hide">
         <div class="some-element">
             <video width="1280" height="720" preload="auto" controls>
-                <source src="videos/000020191102_HDHTML5Video.mp4" type="video/mp4">
+                <source src="videos/main.mp4" type="video/mp4">
             </video>
         </div>
     </div>
@@ -52,58 +52,68 @@
         <div class="carousel-inner" role="listbox">
             <div class="item active">
                 <video width="1280" height="720" autoplay preload="auto" muted loop>
-                  <source src="videos/000020191102_HDHTML5Video.mp4" type="video/mp4">
+                  <source src="videos/main.mp4" type="video/mp4">
                 </video>
                 <div class="container">
                     <div class="carousel-caption">
-                        <h1>The most accurate baseball recruiting website<br>in the midwest</h1>
-                        <p>Other recruiting websites are clunky, outdated, and don't say enough about you. Scouts need a website where they can easily see the best players in the area and what their strengths are. That's where we come in.</p>
+                        <h1>The Midwest's most detailed baseball recruiting website</h1>
+                        <p>Elite Level Prospects' goal is to identify every prospect's individual attributes while accurately ranking and projecting their abilities to the collegiate and professional level.</p>
                         <p><a class="watch-video-link btn btn-lg btn-primary" href="#popup-with-something">Watch video</a><!--<a class="btn btn-lg btn-primary" href="#" role="button">Watch video</a>--></p>
                     </div>
                 </div>
             </div>
             <div class="item">
-                <img src="images/slide_hitting.jpg" alt="Second slide">
+                <video autoplay preload="auto" muted loop>
+                  <source src="videos/hitting.mp4" type="video/mp4">
+                </video>
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>Hitting</h1>
-                        <p>They say you can never stop improving. But when you're done training with us, you'll be hitting it out of the park every time you step up to bat.</p>
+                        <p>Approach, tempo, footwork, bat speed, and strength lay the groundwork for every successful hitter. We can help you reach your full potential and improve every aspect of your swing.</p>
                         <p><a class="btn btn-lg btn-primary" href="players.php" role="button">Learn more</a></p>
                     </div>
                 </div>
             </div>
             <div class="item">
-                <img src="images/slide_fielding.jpg" alt="Third slide">
+                <video autoplay preload="auto" muted loop>
+                  <source src="videos/fielding.mp4" type="video/mp4">
+                </video>
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>Fielding</h1>
-                        <p>Playing well in the outfield is just as important as hitting well. We'll help you improve your fielding skills with customized exercises designed to make you work for it.</p>
+                        <p>We'll help you improve your fielding skills with customized training programs designed to improve every aspect of your fielding skills.</p>
                         <p><a class="btn btn-lg btn-primary" href="players.php" role="button">Learn more</a></p>
                     </div>
                 </div>
             </div>
             <div class="item">
-                <img src="images/slide_pitching.jpg" alt="Fourth slide">
+                <video autoplay preload="auto" muted loop>
+                  <source src="videos/pitching.mp4" type="video/mp4">
+                </video>
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>Pitching</h1>
-                        <p>Pitchers can control the direction of a game. With us, you'll learn all you need to strike out anyone who comes up to the plate.</p>
+                        <p>Flexibility, mental strength, mental toughness, and velocity are all key attributes of every successful pitcher. We specialize in all of these and provide customized training programs to help you improve.</p>
                         <p><a class="btn btn-lg btn-primary" href="players.php" role="button">Learn more</a></p>
                     </div>
                 </div>
             </div>
             <div class="item">
-                <img src="images/slide_coaches.jpg" alt="Fourth slide">
+                <video autoplay preload="auto" muted loop>
+                  <source src="videos/coaches.mp4" type="video/mp4">
+                </video>
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>Coaches Forum</h1>
-                        <p>We don't just cater to the players. Scouts and coaches get their own private area to discuss prospective players and share what they're looking for.</p>
+                        <p>The forum acts as a network for coaches and scouts to converse about potential prospects and also keeps them up to date on midwest baseball events, showcases, tryouts, etc.</p>
                         <p><a class="btn btn-lg btn-primary" href="forum.php" role="button">Learn more</a></p>
                     </div>
                 </div>
             </div>
             <div class="item">
-                <img src="images/slide_prospects.jpg" alt="Fourth slide">
+                <video autoplay preload="auto" muted loop>
+                  <source src="videos/misc.mp4" type="video/mp4">
+                </video>
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>Prospects</h1>

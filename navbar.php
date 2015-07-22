@@ -43,7 +43,7 @@
                             <ul class="dropdown-menu">
                                 <li class="dropdown-header">Specialty</li>
                                 <li><a href="#">Hitting</a></li>
-                                <li><a href="#">Pitching</a></li>
+                                <li><a href="#">Pitching/Fielding</a></li>
                                 <li><a href="#">Speed</a></li>
                             </ul>
                         </li>
@@ -52,7 +52,7 @@
                             <ul class="dropdown-menu">
                                 <li class="dropdown-header">Specialty</li>
                                 <li><a href="#">Hitting</a></li>
-                                <li><a href="#">Pitching</a></li>
+                                <li><a href="#">Pitching/Fielding</a></li>
                                 <li><a href="#">Speed</a></li>
                             </ul>
                         </li>
@@ -61,7 +61,7 @@
                             <ul class="dropdown-menu">
                                 <li class="dropdown-header">Specialty</li>
                                 <li><a href="#">Hitting</a></li>
-                                <li><a href="#">Pitching</a></li>
+                                <li><a href="#">Pitching/Fielding</a></li>
                                 <li><a href="#">Speed</a></li>
                             </ul>
                         </li>
@@ -70,7 +70,7 @@
                             <ul class="dropdown-menu">
                                 <li class="dropdown-header">Specialty</li>
                                 <li><a href="#">Hitting</a></li>
-                                <li><a href="#">Pitching</a></li>
+                                <li><a href="#">Pitching/Fielding</a></li>
                                 <li><a href="#">Speed</a></li>
                             </ul>
                         </li>
