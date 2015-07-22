@@ -46,11 +46,11 @@
 				<?php echo $username; ?>
 			</h1>
 			<ul class="sidebar">
-				<li><img class ="sidebar" src="images/hitter.jpg"> Roll Fizzlebeef</li>
-				<li><img class ="sidebar" src="images/hitter.jpg"> Big McLargehuge</li>
-				<li><img class ="sidebar" src="images/hitter.jpg"> Joel Macklehit</li>
-				<li><img class ="sidebar" src="images/hitter.jpg"> Two Legs Johnny</li>
-				<li><img class ="sidebar" src="images/hitter.jpg"> One Leg Jerry</li>
+				<li>1. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a>Roll Fizzlebeef</a></li>
+				<li>2. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a>Big McLargehuge</a></li>
+				<li>3. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a>Joel Macklehit</a></li>
+				<li>4. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a>Two Legs Johnny</a></li>
+				<li>5. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a>Gene Ricname</a></li>
 			</ul>
 		</div>
 	</div>
@@ -62,6 +62,7 @@
 						<li>Roll Fizzlebeef</li>
 						<li>Shortstop/Inf</li>
 						<li>2016</li>
+						<li><img class="sidebar" src="images/logo small final.jpg">
 					</ul>
 					
 				</div>
@@ -74,7 +75,7 @@
 
 					
 					<div class="basestatistics">
-						<div class="space">
+						<!--<div class="space">-->
 							<ul class="profile">
 								<li class="cat">Height: </li>
 								<li class="stat">6'4"</li>
@@ -97,7 +98,7 @@
 								<li class="cat">ACT Score: </li>
 								<li class="stat">36</li>
 							</ul>
-						</div>
+						<!--</div>-->
 						<ul class="tabs">
 							<li><a href="#vids">Videos</a></li>
 							<li><a href="#anal">Analysis</a></li>
@@ -298,6 +299,9 @@
 					<button class="btn btn-default" type="button">Go!</button>
 				</span>
 			</div>
+			<h1 class="small">
+			Insert Class Buttons
+			</h1>
 		</div>
 	</div>
     </div>

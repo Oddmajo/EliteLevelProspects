@@ -16,21 +16,21 @@
     background-size: cover;
 }
 body{
-	background-image:  url(images/diamond.jpg);
+	background-image:  url(images/diamond2.jpg);
 }
 
 
 .basesegment{
-	background-color: #111111;
+	background-color: #222222;
 	border: solid;
 	border-color: #333333;
-	height: 450px;
+	height: 400px;
 }
 .tabbedsegment{
-	background-color: #111111;
+	background-color: #222222;
 	border: solid;
 	border-color: #333333;
-	height: 650px;
+	height: 600px;
 }
 
 .leftbox{
@@ -46,7 +46,7 @@ body{
 	
 }
 .commentbox{
-	background-color: #111111;
+	background-color: #222222;
 	border: solid;
 	border-color: #333333;
 	margin-top: 25px;
@@ -187,11 +187,14 @@ ul.sidebar > li{
 	margin-bottom: 15px;
 	color: white;
 }
+ul.sidebar > li > a{
+	color: white;
+}
 
 ul.profile{
+margin-top: 25px;
   width:100%;
-  margin-bottom:20px;
-  padding: 10px;
+  padding: 5px;
   overflow:hidden;
   border-top:1px solid #444444;
   border-bottom:1px solid #444444;
@@ -259,7 +262,7 @@ ul.name{
   
 }
 ul.name > li{
-	width: 33%;
+	width: 25%;
 	background-color: #029EDC;
 	padding: 5px;
 	font-size: 16pt;
