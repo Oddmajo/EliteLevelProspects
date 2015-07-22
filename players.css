@@ -1,36 +1,51 @@
+body{
+	background-image:  url(images/diamond2.jpg);
+}
+.content{
+	width: 100%;
+	min-width: 1500px;
+}
 .main {
     display: inline-block;
     width: 70%;
+	min-width: 900px;
     margin: 45px auto;
 }
 .bg-left {
     height: 100%;
     width: 15%;
+	min-width: 150px;
     float:left;
     background-size: cover;
+	overflow: hidden;
 }
 .bg-right {
     height: 100%;
     width: 15%;
+	min-width: 150px;
     float: right;
     background-size: cover;
+	overflow: hidden;
 }
-body{
-	background-image:  url(images/diamond2.jpg);
-}
-
 
 .basesegment{
 	background-color: #222222;
 	border: solid;
-	border-color: #333333;
+	border-color: #555555;
 	height: 400px;
 }
 .tabbedsegment{
 	background-color: #222222;
 	border: solid;
-	border-color: #333333;
+	border-color: #555555;
 	height: 600px;
+}
+.commentsegment{
+	background-color: #222222;
+	border: solid;
+	border-color: #555555;
+	margin-top: 25px;
+	height: 300px;
 }
 
 .leftbox{
@@ -45,15 +60,6 @@ body{
 	margin: 10px;
 	
 }
-.commentbox{
-	background-color: #222222;
-	border: solid;
-	border-color: #333333;
-	margin-top: 25px;
-	height: 300px;
-}
-
-
 
 ul.tabs{
     /*padding: 7px 0;*/
@@ -100,21 +106,13 @@ ul.tabs li.selected a, ul.tabs li.selected a:hover{
 ul.tabs li.selected a:hover{
     text-decoration: none;
 }
-div.tabcontents{
-    padding: 0px;
-	margin-top: 25px;
-}
 
 div.tabcontent{
     padding: 30px;
 }
 
 .space {
-    margin: 25px;
-    display: block;
-}
-.sspace {
-    margin: 10px;
+    margin: 15px;
     display: block;
 }
 
@@ -130,7 +128,7 @@ div.tabcontent{
 img.players {
     width: 100%;
 	border: solid;
-	border-color: #333333;
+	border-color: #555555;
 }
 img.vid{
 	width: 100%;
@@ -159,11 +157,11 @@ h1.light {
 }
 h1.small{
 	margin: 0;
-	border: solid #333333;
+	border: solid #555555;
 	border-top: none;
 	color: white;
-	background-color: #111111;
-	font-size: 90%;
+	background-color: #333333;
+	font-size: auto;
 	font-family: 'Russo One', sans-serif;
 	text-transform: uppercase;
 }
@@ -175,12 +173,12 @@ ul.sidebar{
 	overflow:hidden;
 }
 ul.sidebar > li{
-	background-color: #111111;
-	border: 1px solid #333333;
+	background-color: #333333;
+	border: 1px solid #555555;
 	width: 100%;
 	font-family: 'Lato', sans-serif;
 	padding: 5px;
-	font-size: 12pt;
+	font-size: 10pt;
 	line-height:1.5em;
 	float:left;
 	display:inline;
@@ -192,12 +190,12 @@ ul.sidebar > li > a{
 }
 
 ul.profile{
-margin-top: 25px;
-  width:100%;
-  padding: 5px;
-  overflow:hidden;
-  border-top:1px solid #444444;
-  border-bottom:1px solid #444444;
+	margin-top: 25px;
+	width:100%;
+	padding: 5px;
+	overflow:hidden;
+	border-top:1px solid #444444;
+	border-bottom:1px solid #444444;
 }
 ul.profile > li.cat{
 	width: 25%;
@@ -262,7 +260,7 @@ ul.name{
   
 }
 ul.name > li{
-	width: 25%;
+	width: 33%;
 	background-color: #029EDC;
 	padding: 5px;
 	font-size: 16pt;
@@ -271,10 +269,6 @@ ul.name > li{
 	display:inline;
 	text-align: center;
 }
-
-
-
-
 
 .detailBox {
     width: 100%;
@@ -289,7 +283,6 @@ ul.name > li{
   margin:0;
   display:inline-block;
 }
-
 .commentBox {
     padding:10px;
     border-top:1px dotted #bbb;

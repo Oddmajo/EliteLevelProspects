@@ -38,34 +38,33 @@
     <div class="content">
 	<div class="bg-left">
 		<div class="space">
-			<img class="players" src="images/coach.jpg">
-			<?php
-                    $username = $_SESSION['username'];
-			?>
-			<h1 class="small">
-				<?php echo $username; ?>
-			</h1>
-			<ul class="sidebar">
-				<li>1. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a>Roll Fizzlebeef</a></li>
-				<li>2. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a>Big McLargehuge</a></li>
-				<li>3. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a>Joel Macklehit</a></li>
-				<li>4. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a>Two Legs Johnny</a></li>
-				<li>5. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a>Gene Ricname</a></li>
-			</ul>
+			
+				<img class="players" src="images/coach.jpg">
+				<?php
+						$username = $_SESSION['username'];
+				?>
+				<h1 class="small">
+					<?php echo $username; ?>
+				</h1>
+				<ul class="sidebar">
+					<li>1. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a>Roll Fizzlebeef</a></li>
+					<li>2. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a>Big McLargehuge</a></li>
+					<li>3. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a>Joel Macklehit</a></li>
+					<li>4. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a>Two Legs Johnny</a></li>
+					<li>5. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a>One Leg Jerry</a></li>
+					<li>6. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a>Gene Ricname</a></li>
+				</ul>
+			
 		</div>
 	</div>
 	<div class="main">
 		<div class="space">
 			<div class="basesegment">
-				<div class="space">
-					<ul class="name"id="triple">
+					<ul class="name">
 						<li>Roll Fizzlebeef</li>
 						<li>Shortstop/Inf</li>
 						<li>2016</li>
-						<li><img class="sidebar" src="images/logo small final.jpg">
 					</ul>
-					
-				</div>
 				<div class="space">
 					<div class="profilepicture">
 						<div class="space">
@@ -75,7 +74,7 @@
 
 					
 					<div class="basestatistics">
-						<!--<div class="space">-->
+						<div class="space">
 							<ul class="profile">
 								<li class="cat">Height: </li>
 								<li class="stat">6'4"</li>
@@ -98,7 +97,7 @@
 								<li class="cat">ACT Score: </li>
 								<li class="stat">36</li>
 							</ul>
-						<!--</div>-->
+						</div>
 						<ul class="tabs">
 							<li><a href="#vids">Videos</a></li>
 							<li><a href="#anal">Analysis</a></li>
@@ -110,11 +109,9 @@
 
 				</div>
 			</div>
-			<!--<div class="sspace">-->
-				
-			<!--</div>-->
 			
-			<div class="tabcontents">
+			
+			<div class="tabcontent" style="padding:0px;margin-top:25px;">
 				<div id="default">
 				</div>
 				<div id="vids">
@@ -124,9 +121,9 @@
 							<li><a href="#ball1">Pitching/Fielding</a></li>
 							<li><a href="#run1">Speed</a></li>
 						</ul>
-						<div class="tabcontent" padding="30px">
+						<div class="tabcontent">
 							<div id="bat1">
-								<!--<div class="space">-->
+								
 									<div class="leftbox">
 										<iframe width="100%" height="480" src="https://www.youtube.com/embed/wlXuqdzA1nY" frameborder="0" allowfullscreen></iframe>
 									</div>
@@ -142,10 +139,10 @@
 											<li class="stat">numbers</li>
 										</ul>
 									</div>
-								<!--</div>-->
+								
 							</div>
 							<div id="ball1">
-								<!--<div class="space">-->
+								
 									<div class="leftbox">
 										<iframe width="100%" height="480" src="https://www.youtube.com/embed/wlXuqdzA1nY" frameborder="0" allowfullscreen></iframe>
 									</div>
@@ -161,10 +158,10 @@
 											<li class="stat">numbers</li>
 										</ul>
 									</div>
-								<!--</div>-->
+								
 							</div>
 							<div id="run1">
-								<!--<div class="space">-->
+								
 									<div class="leftbox">
 										<iframe width="100%" height="480" src="https://www.youtube.com/embed/wlXuqdzA1nY" frameborder="0" allowfullscreen></iframe>
 									</div>
@@ -180,7 +177,7 @@
 											<li class="stat">numbers</li>
 										</ul>
 									</div>
-								<!--</div>-->
+								
 							</div>
 						</div>
 					</div>
@@ -232,8 +229,8 @@
 			 <?php
 				if($usertype == 'coach'){ 
 			?>
-					<div class="commentbox">
-						<div class="sspace">
+					<div class="commentsegment">
+						<div class="space" style="margin:10px;">
 							<div class="detailBox">
 								<div class="titleBox">
 								  <label>Comment Box</label>
@@ -299,9 +296,11 @@
 					<button class="btn btn-default" type="button">Go!</button>
 				</span>
 			</div>
-			<h1 class="small">
-			Insert Class Buttons
-			</h1>
+			<div class="space">
+				<h1 class="small">
+				Graduation Year
+				</h1>
+			</div>
 		</div>
 	</div>
     </div>
