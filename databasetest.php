@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "elp model 1";
+$dbname = "elp bio";
 
 // Player id
 $playerId = 1;
@@ -15,30 +15,26 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$query = "SELECT first_name, last_name, dob, grad_year, height, weight, throws, bats, city, state, school_id FROM player_details WHERE player_id=" . $playerId;
+$query = "SELECT first_name, last_name, dob, grad_year, height, weight, throws, bats, player_details.city, player_details.state, player_details.school_id, school.school_id, school.name, school.city as school_city, school.state as school_state
+FROM player_details, school
+WHERE player_id = " . $playerId . " AND player_details.school_id = school.school_id";
 $result = $conn->query($query);
 $row = $result->fetch_assoc(); // puts the first row of the table into an array
 $schoolId = $row["school_id"];
+$feet = floor($row["height"] / 12);
+$inches = round(($row["height"] / 12 - floor($row["height"] / 12)) * 12);
 ?>
 
 First name: <?php echo $row["first_name"]?><br>
 Last name: <?php echo $row["last_name"]?><br>
 Date of birth: <?php echo $row["dob"]?><br>
 Grad year: <?php echo $row["grad_year"]?><br>
-Height: <?php echo $row["height"]?> cm<br>
-Weight: <?php echo $row["weight"]?> kg<br>
+Height: <?php echo $feet . "'" . $inches . '"'?><br>
+Weight: <?php echo $row["weight"]?> lb<br>
 Throws: <?php echo $row["throws"]?><br>
 Bats: <?php echo $row["bats"]?><br>
 City/State: <?php echo $row["city"]?>, <?php echo $row["state"]?><br>
-
-<?php
-// Get school data from school table using schoolId
-$query = "SELECT name, city, state FROM school WHERE school_id=" . $schoolId;
-$result = $conn->query($query);
-$row = $result->fetch_assoc(); // puts the first row of the table into an array
-?>
-
-School: <?php echo $row["name"]?>, <?php echo $row["city"]?>, <?php echo $row["state"]?><br>
+School: <?php echo $row["name"]?>, <?php echo $row["school_city"]?>, <?php echo $row["school_state"]?><br>
 
 <?php
 $conn->close();
