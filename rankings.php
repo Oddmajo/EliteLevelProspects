@@ -33,19 +33,47 @@
         $password = "";
         $dbname = "elp bio";
 
+        // Player id
+        $playerId = 6;
+
         // Create connection
         $conn = new mysqli($servername, $username, $password, $dbname);
         // Check connection
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
+
+        $query = "SELECT bat_speed, exit_velocity, player_id, date_stats_collected
+        FROM batspeed_stats
+        WHERE player_id = " . $playerId . "
+        ORDER BY date_stats_collected";
+        $result = $conn->query($query);
+        $hittingArray = ResultToArray($result);
+
+        function WriteName($row) {
+            echo $row["first_name"] . " " . $row["last_name"] . " (" . $row["player_id"] . ")";
+        }
+
+        // Plot a stat with
+        function PlotStat($array, $xAxisName, $yAxisName) {
+            foreach ($array as $row) {
+                echo "{ x: new Date('" . $row[$xAxisName] . "'), y: " . $row[$yAxisName] . " },";
+            }
+        }
+
+        function ResultToArray($result) {
+            $resultArray = array();
+            while($row = $result->fetch_assoc()) {
+                $resultArray[] = $row;
+            }
+            return $resultArray;
+        }
     ?>
     <div class="container">
-        <h2>Progression</h2>
+        <h2>Hitting</h2>
         <canvas id="myChart" width="800" height="400"></canvas>
-        <h2>Five-Tool Model</h2>
-        <canvas id="myRadarChart" width="400" height="400"></canvas>
-
+        <h2>Five-Tool Model <span class="small">Rating: 3.6</span></h2>
+        <canvas id="myRadarChart" width="400" height="300"></canvas>
         <div class="alert alert-info">
           <strong>Tip:</strong> To sort the table by a column, click the column title you want to sort by.
         </div>
@@ -76,7 +104,7 @@
                     while($row = $result->fetch_assoc()) {
                         ?>
                         <tr>
-                            <td><?php echo $row["first_name"] . " " . $row["last_name"]?></td>
+                            <td><?php WriteName($row)?></td>
                             <td>N/A</td>
                             <td><?php echo $row["bat_speed"]?> mph</td>
                             <td><?php echo $row["exit_velocity"]?> mph</td>
@@ -114,7 +142,7 @@
                     while($row = $result->fetch_assoc()) {
                         ?>
                         <tr>
-                            <td><?php echo $row["first_name"] . " " . $row["last_name"]?></td>
+                            <td><?php WriteName($row)?></td>
                             <td><?php echo $row["curveball"]?> mph</td>
                             <td><?php echo $row["changeball"]?> mph</td>
                             <td><?php echo $row["two_seem"]?> mph</td>
@@ -148,7 +176,7 @@
                     while($row = $result->fetch_assoc()) {
                         ?>
                         <tr>
-                            <td><?php echo $row["first_name"] . " " . $row["last_name"]?></td>
+                            <td><?php WriteName($row)?></td>
                             <td><?php echo $row["outfield_throwing_speed"]?> mph</td>
                             <td><?php echo $row["infield_throwing_speed"]?> mph</td>
                         </tr>
@@ -174,19 +202,19 @@
             <tbody>
                 <?php
                     // query the player details and bat speed tables and select the latest bat speed entry for each player, then order the table by bat speed
-                    $query = "SELECT first_name, last_name, sixty_yard_time, vertical_leap, shuttle_run, reach, player_details.player_id, infielder_stats.player_id, MAX(date_stats_collected)
-                    FROM player_details, infielder_stats
-                    WHERE player_details.player_id = infielder_stats.player_id
+                    $query = "SELECT first_name, last_name, sixty_yard_time, onetwenty_yard_time, vertical_leap, shuttle_run, reach, player_details.player_id, player_speed.player_id, MAX(date_stats_collected)
+                    FROM player_details, player_speed
+                    WHERE player_details.player_id = player_speed.player_id
                     GROUP BY player_details.player_id";
                     $result = $conn->query($query);
 
                     while($row = $result->fetch_assoc()) {
                         ?>
                         <tr>
-                            <td><?php echo $row["first_name"] . " " . $row["last_name"]?></td>
+                            <td><?php WriteName($row)?></td>
                             <td>N/A</td>
                             <td><?php echo $row["sixty_yard_time"]?> s</td>
-                            <td>N/A</td>
+                            <td><?php echo $row["onetwenty_yard_time"]?> s</td>
                             <td><?php echo $row["vertical_leap"]?> in</td>
                             <td><?php echo $row["shuttle_run"]?> s</td>
                             <td><?php echo $row["reach"]?> in</td>
@@ -207,7 +235,8 @@
     <script src="bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
     <!-- Custom js libraries -->
     <script type="text/javascript" src="tablesorter/js/jquery.tablesorter.js"></script>
-    <script src="Chart.js/Chart.js"></script>
+    <script src="Chart.js/Chart.min.js"></script>
+    <script src="Chart.Scatter.js/Chart.Scatter.min.js"></script>
 
     <script>
         $(document).ready(function(){
@@ -215,83 +244,52 @@
                 $("table").tablesorter();
 
                 var ctx = $("#myChart").get(0).getContext("2d");
-                var data = {
-                    labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-                    datasets: [
-                        {
-                            label: "My First dataset",
-                            fillColor: "rgba(2, 158, 220, 0.2)",
-                            strokeColor: "rgba(2, 158, 220, 1)",
-                            pointColor: "rgba(2, 158, 220, 1)",
-                            pointStrokeColor: "#fff",
-                            pointHighlightFill: "#fff",
-                            pointHighlightStroke: "rgba(220,220,220,1)",
-                            data: [30, 32, 33, 35, 37, 39, 40, 45, 49, 55, 62, 71]
-                        }
-                    ]
-                };
+                var data = [
+                    {
+                        label: 'Bat speed',
+                        fillColor: "rgba(2, 158, 220, 0.2)",
+                        strokeColor: "rgba(2, 158, 220, 1)",
+                        pointColor: "rgba(2, 158, 220, 1)",
+                        data: [
+                            <?php
+                            PlotStat($hittingArray, "date_stats_collected", "bat_speed");
+                            ?>
+                        ]
+                    },
+                    {
+                        label: 'Exit velocity',
+                        fillColor: "rgba(2, 158, 220, 0.2)",
+                        strokeColor: "rgba(2, 158, 220, 1)",
+                        pointColor: "rgba(2, 158, 220, 1)",
+                        data: [
+                            <?php
+                            PlotStat($hittingArray, "date_stats_collected", "exit_velocity");
+                            ?>
+                        ]
+                    }
+                ];
                 var options = {
-                    ///Boolean - Whether grid lines are shown across the chart
-                    scaleShowGridLines : true,
-
-                    //String - Colour of the grid lines
-                    scaleGridLineColor : "rgba(0,0,0,.05)",
-
-                    //Number - Width of the grid lines
-                    scaleGridLineWidth : 1,
-
-                    //Boolean - Whether to show horizontal lines (except X axis)
-                    scaleShowHorizontalLines: true,
-
-                    //Boolean - Whether to show vertical lines (except Y axis)
-                    scaleShowVerticalLines: true,
-
-                    //Boolean - Whether the line is curved between points
-                    bezierCurve : true,
-
-                    //Number - Tension of the bezier curve between points
-                    bezierCurveTension : 0.4,
-
-                    //Boolean - Whether to show a dot for each point
-                    pointDot : true,
-
-                    //Number - Radius of each point dot in pixels
-                    pointDotRadius : 4,
-
-                    //Number - Pixel width of point dot stroke
-                    pointDotStrokeWidth : 1,
-
-                    //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-                    pointHitDetectionRadius : 20,
-
-                    //Boolean - Whether to show a stroke for datasets
-                    datasetStroke : true,
-
-                    //Number - Pixel width of dataset stroke
-                    datasetStrokeWidth : 2,
-
-                    //Boolean - Whether to fill the dataset with a colour
-                    datasetFill : true,
-
-                    //String - A legend template
-                    legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
-
+                    bezierCurve: false,
+                    scaleType: "date",
+                    scaleDateFormat: "mmm",
+                    scaleDateTimeFormat: "mmm d, yyyy",
+                    scaleLabel: "<%=value%> mph"
                 };
-                var myLineChart = new Chart(ctx).Line(data, options);
+                var myScatterChart = new Chart(ctx).Scatter(data, options);
 
                 ctx = $("#myRadarChart").get(0).getContext("2d");
                 data = {
-                    labels: ["Speed", "Arm Strength", "Hitting for Average", "Hitting for Power", "Fielding"],
+                    labels: ["Running Speed", "Arm Strength", "Hitting for Average", "Hitting for Power", "Fielding"],
                     datasets: [
                         {
-                            label: "My First dataset",
+                            label: "Five-Tool Model",
                             fillColor: "rgba(2, 158, 220, 0.2)",
                             strokeColor: "rgba(2, 158, 220, 1)",
                             pointColor: "rgba(2, 158, 220, 1)",
                             pointStrokeColor: "#fff",
                             pointHighlightFill: "#fff",
                             pointHighlightStroke: "rgba(220,220,220,1)",
-                            data: [0.85, 0.9, 0.7, 0.6, 0.4]
+                            data: [0.75, 0.9, 0.7, 0.65, 0.6]
                         }
                     ]
                 }
