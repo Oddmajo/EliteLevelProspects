@@ -34,7 +34,10 @@
         $dbname = "elp bio";
 
         // Player id
-        $playerId = 6;
+        $playerId = 10;
+
+        // Projections
+        $projectionSteps = 3;
 
         // Create connection
         $conn = new mysqli($servername, $username, $password, $dbname);
@@ -48,13 +51,59 @@
         WHERE player_id = " . $playerId . "
         ORDER BY date_stats_collected";
         $result = $conn->query($query);
-        $hittingArray = ResultToArray($result);
+        $lineGraphData = ResultToArray($result);
+        $statNames = array("bat_speed", "exit_velocity");
 
-        function WriteName($row) {
-            echo $row["first_name"] . " " . $row["last_name"] . " (" . $row["player_id"] . ")";
+        $lineGraphProjections = Project($lineGraphData, $statNames, 2);
+
+        function Project($data, $statNames, $steps = 3) {
+            $slopes = array(); //array where stat name maps to average slope of stat
+            $projections = array();
+            $arraySize = count($data);
+
+            if ($arraySize >= $steps) {
+                // Find the average slope of the last <projectionSteps> entries
+                foreach($statNames as $statName)
+                    $slopes[$statName] = 0;
+
+                $count = 0;
+                for($i = $arraySize - $steps; $i < $arraySize - 1; $i++) {
+                    $count++;
+
+                    $x1 = strtotime($data[$i]["date_stats_collected"]);
+                    $x2 = strtotime($data[$i + 1]["date_stats_collected"]);
+
+                    foreach($statNames as $statName) {
+                        $y1 = $data[$i][$statName];
+                        $y2 = $data[$i + 1][$statName];
+                        $slopes[$statName] += ($y2-$y1)/($x2-$x1);
+                    }
+                }
+
+                $i = $arraySize - 1;
+                $row = array();
+                $row["date_stats_collected"] = $data[$i]["date_stats_collected"];
+                $timespan = strtotime($data[$arraySize - 1]["date_stats_collected"]) - strtotime($data[$arraySize - $steps]["date_stats_collected"]);
+                $row2 = array();
+                $row2["date_stats_collected"] = date("Y-m-d", strtotime($data[$arraySize - 1]["date_stats_collected"]) + $timespan);
+
+                foreach($statNames as $statName) {
+                    $slopes[$statName] /= $count;
+                    $row[$statName] = $data[$i][$statName];
+                    $row2[$statName] = $row[$statName] + $slopes[$statName] * $timespan;
+                }
+
+                $projections[] = $row;
+                $projections[] = $row2;
+            }
+
+            return $projections;
         }
 
-        // Plot a stat with
+        function WriteName($row) {
+            echo $row["first_name"] . " " . $row["last_name"];// . " (" . $row["player_id"] . ")";
+        }
+
         function PlotStat($array, $xAxisName, $yAxisName) {
             foreach ($array as $row) {
                 echo "{ x: new Date('" . $row[$xAxisName] . "'), y: " . $row[$yAxisName] . " },";
@@ -246,27 +295,45 @@
                 var ctx = $("#myChart").get(0).getContext("2d");
                 var data = [
                     {
+                        label: 'Projected bat speed',
+                        strokeColor: "rgba(220, 220, 220, 1)",
+                        pointColor: "rgba(220, 220, 220, 1)",
+                        data: [
+                            <?php
+                            PlotStat($lineGraphProjections, "date_stats_collected", "bat_speed");
+                            ?>
+                        ]
+                    },
+                    {
+                        label: 'Projected exit velocity',
+                        strokeColor: "rgba(220, 220, 220, 1)",
+                        pointColor: "rgba(220, 220, 220, 1)",
+                        data: [
+                            <?php
+                            PlotStat($lineGraphProjections, "date_stats_collected", "exit_velocity");
+                            ?>
+                        ]
+                    },
+                    {
                         label: 'Bat speed',
-                        fillColor: "rgba(2, 158, 220, 0.2)",
                         strokeColor: "rgba(2, 158, 220, 1)",
                         pointColor: "rgba(2, 158, 220, 1)",
                         data: [
                             <?php
-                            PlotStat($hittingArray, "date_stats_collected", "bat_speed");
+                            PlotStat($lineGraphData, "date_stats_collected", "bat_speed");
                             ?>
                         ]
                     },
                     {
                         label: 'Exit velocity',
-                        fillColor: "rgba(2, 158, 220, 0.2)",
-                        strokeColor: "rgba(2, 158, 220, 1)",
-                        pointColor: "rgba(2, 158, 220, 1)",
+                        strokeColor: "#F16220",
+                        pointColor: "#F16220",
                         data: [
                             <?php
-                            PlotStat($hittingArray, "date_stats_collected", "exit_velocity");
+                            PlotStat($lineGraphData, "date_stats_collected", "exit_velocity");
                             ?>
                         ]
-                    }
+                    },
                 ];
                 var options = {
                     bezierCurve: false,
