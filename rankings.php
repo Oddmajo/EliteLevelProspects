@@ -25,7 +25,9 @@
 
 <body>
     <?php
-        //include_once('navbar.php');
+        $allowCoaches = true;
+        require('protected.php');
+        include_once('navbar.php');
 
         // Variables for connecting to the mySQL server
         $servername = "localhost";
@@ -38,6 +40,12 @@
 
         // Projections
         $projectionSteps = 3;
+
+        // Rankings
+        define("BAT_SPEED_GOOD", "85");
+        define("BAT_SPEED_BAD", "60");
+        define("EXIT_VELOCITY_GOOD", "95");
+        define("EXIT_VELOCITY_BAD", "70");
 
         // Create connection
         $conn = new mysqli($servername, $username, $password, $dbname);
@@ -53,8 +61,20 @@
         $result = $conn->query($query);
         $lineGraphData = ResultToArray($result);
         $statNames = array("bat_speed", "exit_velocity");
+        $lineGraphProjections = Project($lineGraphData, $statNames, 3);
 
-        $lineGraphProjections = Project($lineGraphData, $statNames, 2);
+        $query = "SELECT rank, bat_speed, exit_velocity, player_id, batspeed_id
+        FROM batspeed_stats";
+        $result = $conn->query($query);
+        $array = RankHitting($result);
+
+        foreach($array as $row) {
+            $query = "UPDATE batspeed_stats
+            SET rank = " . $row["rank"] . "
+            WHERE batspeed_id = " . $row["batspeed_id"];
+            $conn->query($query);
+        }
+
 
         function Project($data, $statNames, $steps = 3) {
             $slopes = array(); //array where stat name maps to average slope of stat
@@ -117,6 +137,20 @@
             }
             return $resultArray;
         }
+
+        function RankHitting($result) {
+            $array = array();
+            while($row = $result->fetch_assoc()) {
+                $row["rank"] = InverseLerp($row["bat_speed"], BAT_SPEED_GOOD, BAT_SPEED_BAD) + InverseLerp($row["exit_velocity"], EXIT_VELOCITY_GOOD, EXIT_VELOCITY_BAD);
+                $array[] = $row;
+            }
+
+            return $array;
+        }
+
+        function InverseLerp($value, $max, $min) {
+            return ($value - $min) / ($max - $min);
+        }
     ?>
     <div class="container">
         <h2>Hitting</h2>
@@ -127,7 +161,7 @@
           <strong>Tip:</strong> To sort the table by a column, click the column title you want to sort by.
         </div>
 
-        <h2>Hitting</h2>
+        <h2 id="hitting">Hitting</h2>
         <table class="table table-striped table-hover tablesorter" id="hittingTable">
             <thead>
                 <tr>
@@ -144,7 +178,7 @@
             <tbody>
                 <?php
                     // query the player details and bat speed tables and select the latest bat speed entry for each player, then order the table by bat speed
-                    $query = "SELECT first_name, last_name, bat_speed, exit_velocity, bench_press, dead_lift, squat, player_details.player_id, batspeed_stats.player_id, player_strength.player_id, MAX(batspeed_stats.date_stats_collected)
+                    $query = "SELECT first_name, last_name, rank, bat_speed, exit_velocity, bench_press, dead_lift, squat, player_details.player_id, batspeed_stats.player_id, player_strength.player_id, MAX(batspeed_stats.date_stats_collected)
                     FROM player_details, batspeed_stats, player_strength
                     WHERE player_details.player_id = batspeed_stats.player_id AND player_details.player_id = player_strength.player_id
                     GROUP BY player_details.player_id";
@@ -154,7 +188,7 @@
                         ?>
                         <tr>
                             <td><?php WriteName($row)?></td>
-                            <td>N/A</td>
+                            <td><?php echo $row["rank"]?></td>
                             <td><?php echo $row["bat_speed"]?> mph</td>
                             <td><?php echo $row["exit_velocity"]?> mph</td>
                             <td><?php echo $row["bench_press"]?> lb</td>
@@ -167,7 +201,7 @@
             </tbody>
         </table>
 
-        <h2>Pitching</h2>
+        <h2 id="pitching">Pitching</h2>
         <table class="table table-striped table-hover tablesorter" id="pitchingTable">
             <thead>
                 <tr>
@@ -203,21 +237,22 @@
             </tbody>
         </table>
 
-        <h2>Fielding</h2>
+        <h2 id="fielding">Fielding</h2>
         <table class="table table-striped table-hover tablesorter" id="fieldingTable">
             <thead>
                 <tr>
                     <th>Name</th>
                     <th class="lockedOrder-desc sorted-column">Outfield throwing speed</th>
                     <th class="lockedOrder-desc">Infield throwing speed</th>
+                    <th class="lockedOrder-asc">Pop time</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                     // query the player details and bat speed tables and select the latest bat speed entry for each player, then order the table by bat speed
-                    $query = "SELECT first_name, last_name, outfielder_stats.throwing_speed as outfield_throwing_speed, infielder_stats.throwing_speed as infield_throwing_speed, player_details.player_id, outfielder_stats.player_id, infielder_stats.player_id, MAX(outfielder_stats.date_stats_collected)
-                    FROM player_details, outfielder_stats, infielder_stats
-                    WHERE player_details.player_id = infielder_stats.player_id AND player_details.player_id = outfielder_stats.player_id
+                    $query = "SELECT first_name, last_name, outfielder_stats.throwing_speed as outfield_throwing_speed, infielder_stats.throwing_speed as infield_throwing_speed, pop_time, player_details.player_id, outfielder_stats.player_id, infielder_stats.player_id, MAX(outfielder_stats.date_stats_collected)
+                    FROM player_details, outfielder_stats, infielder_stats, catcher_stats
+                    WHERE player_details.player_id = infielder_stats.player_id AND player_details.player_id = outfielder_stats.player_id AND player_details.player_id = catcher_stats.player_id
                     GROUP BY player_details.player_id
                     ORDER BY outfielder_stats.throwing_speed";
                     $result = $conn->query($query);
@@ -228,6 +263,7 @@
                             <td><?php WriteName($row)?></td>
                             <td><?php echo $row["outfield_throwing_speed"]?> mph</td>
                             <td><?php echo $row["infield_throwing_speed"]?> mph</td>
+                            <td><?php echo $row["pop_time"]?> s</td>
                         </tr>
                         <?php
                     }
@@ -235,7 +271,7 @@
             </tbody>
         </table>
 
-        <h2>Speed</h2>
+        <h2 id="speed">Speed</h2>
         <table class="table table-striped table-hover tablesorter" id="speedTable">
             <thead>
                 <tr>

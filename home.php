@@ -51,13 +51,13 @@
         <!-- Slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <video width="1280" height="720" autoplay preload="auto" muted loop>
+                <video width="1280" height="720" autoplay muted loop>
                   <source src="videos/main.mp4" type="video/mp4">
                 </video>
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>The Midwest's most detailed baseball recruiting website</h1>
-                        <p>Elite Level Prospects' goal is to identify every prospect's individual attributes while accurately ranking and projecting their abilities to the collegiate and professional level.</p>
+                        <p>Our goal is to identify your individual strengths and weaknesses, while also accurately ranking and projecting your abilities to the collegiate and professional level.</p>
                         <p><a class="watch-video-link btn btn-lg btn-primary" href="#popup-with-something">Watch video</a><!--<a class="btn btn-lg btn-primary" href="#" role="button">Watch video</a>--></p>
                     </div>
                 </div>
