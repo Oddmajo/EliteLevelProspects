@@ -33,7 +33,7 @@
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = "elp bio";
+        $dbname = "elp statistics";
 
         // Player id
         $playerId = 10;
@@ -63,18 +63,17 @@
         $statNames = array("bat_speed", "exit_velocity");
         $lineGraphProjections = Project($lineGraphData, $statNames, 3);
 
-        $query = "SELECT rank, bat_speed, exit_velocity, player_id, batspeed_id
+        $query = "SELECT score, bat_speed, exit_velocity, player_id, batspeed_id
         FROM batspeed_stats";
         $result = $conn->query($query);
         $array = RankHitting($result);
 
         foreach($array as $row) {
             $query = "UPDATE batspeed_stats
-            SET rank = " . $row["rank"] . "
+            SET score = " . $row["score"] . "
             WHERE batspeed_id = " . $row["batspeed_id"];
             $conn->query($query);
         }
-
 
         function Project($data, $statNames, $steps = 3) {
             $slopes = array(); //array where stat name maps to average slope of stat
@@ -141,7 +140,7 @@
         function RankHitting($result) {
             $array = array();
             while($row = $result->fetch_assoc()) {
-                $row["rank"] = InverseLerp($row["bat_speed"], BAT_SPEED_GOOD, BAT_SPEED_BAD) + InverseLerp($row["exit_velocity"], EXIT_VELOCITY_GOOD, EXIT_VELOCITY_BAD);
+                $row["score"] = InverseLerp($row["bat_speed"], BAT_SPEED_GOOD, BAT_SPEED_BAD) + InverseLerp($row["exit_velocity"], EXIT_VELOCITY_GOOD, EXIT_VELOCITY_BAD);
                 $array[] = $row;
             }
 
@@ -178,7 +177,7 @@
             <tbody>
                 <?php
                     // query the player details and bat speed tables and select the latest bat speed entry for each player, then order the table by bat speed
-                    $query = "SELECT first_name, last_name, rank, bat_speed, exit_velocity, bench_press, dead_lift, squat, player_details.player_id, batspeed_stats.player_id, player_strength.player_id, MAX(batspeed_stats.date_stats_collected)
+                    $query = "SELECT first_name, last_name, score, bat_speed, exit_velocity, bench_press, dead_lift, squat, player_details.player_id, batspeed_stats.player_id, player_strength.player_id, MAX(batspeed_stats.date_stats_collected)
                     FROM player_details, batspeed_stats, player_strength
                     WHERE player_details.player_id = batspeed_stats.player_id AND player_details.player_id = player_strength.player_id
                     GROUP BY player_details.player_id";
@@ -188,7 +187,7 @@
                         ?>
                         <tr>
                             <td><?php WriteName($row)?></td>
-                            <td><?php echo $row["rank"]?></td>
+                            <td><?php echo $row["score"]?></td>
                             <td><?php echo $row["bat_speed"]?> mph</td>
                             <td><?php echo $row["exit_velocity"]?> mph</td>
                             <td><?php echo $row["bench_press"]?> lb</td>
@@ -287,7 +286,7 @@
             <tbody>
                 <?php
                     // query the player details and bat speed tables and select the latest bat speed entry for each player, then order the table by bat speed
-                    $query = "SELECT first_name, last_name, sixty_yard_time, onetwenty_yard_time, vertical_leap, shuttle_run, reach, player_details.player_id, player_speed.player_id, MAX(date_stats_collected)
+                    $query = "SELECT first_name, last_name, score, sixty_yard_time, onetwenty_yard_time, vertical_leap, shuttle_run, reach, player_details.player_id, player_speed.player_id, MAX(date_stats_collected)
                     FROM player_details, player_speed
                     WHERE player_details.player_id = player_speed.player_id
                     GROUP BY player_details.player_id";
@@ -297,7 +296,7 @@
                         ?>
                         <tr>
                             <td><?php WriteName($row)?></td>
-                            <td>N/A</td>
+                            <td><?php echo $row["score"]?></td>
                             <td><?php echo $row["sixty_yard_time"]?> s</td>
                             <td><?php echo $row["onetwenty_yard_time"]?> s</td>
                             <td><?php echo $row["vertical_leap"]?> in</td>

@@ -1,5 +1,5 @@
 body{
-	background-image:  url(images/baseball.jpg);
+	background-image:  url(images/baseball.png);
 	background-repeat: no-repeat;
 }
 .content{
@@ -60,7 +60,7 @@ body{
 	width: 30%;
 	height: 480px;
 	margin: 10px;
-	
+
 }
 
 ul.tabs{
@@ -111,7 +111,7 @@ ul.tabs li.selected a, ul.tabs li.selected a:hover{
 	border-bottom-width: 4px;
     font-weight:bold;
 	color: #029EDC;
-}       
+}
 ul.tabs li.selected a:hover{
     text-decoration: none;
 }
@@ -263,7 +263,7 @@ ul.name{
 	text-transform: uppercase;
 	margin: 20px;
 	font-style: italic;
-  
+
 }
 ul.name > li{
 	width: 20%;

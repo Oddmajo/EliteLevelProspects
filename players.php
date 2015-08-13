@@ -5,7 +5,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "elitelevelprospects";
+$dbname = "elp statistics";
 
 // Player id
 if(isset($_GET['player']))
@@ -93,7 +93,7 @@ function ResultToArray($result) {
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="Jacob Nash">
-	
+
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/dropdown.css" rel="stylesheet">
@@ -106,31 +106,31 @@ function ResultToArray($result) {
 	<!-- Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Russo+One|Pathway+Gothic+One' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Lato|Oswald|Montserrat' rel='stylesheet' type='text/css'>
-	
-	
+
+
 	<?php
 	if(isset($playerId))
 	{
-		$query = "SELECT 
-				player_details.*, 
-				school.*, 
+		$query = "SELECT
+				player_details.*,
+				school.*,
 				player_position.*, positions.*
-				
-			FROM 
+
+			FROM
 				player_details, school, player_position, positions
-				
-				
-			WHERE player_details.player_id = " . $playerId . " 
-			AND player_details.school_id = school.school_id 
+
+
+			WHERE player_details.player_id = " . $playerId . "
+			AND player_details.school_id = school.school_id
 			AND player_position.player_id = " . $playerId . " AND positions.pos_id = player_position.pos_id";
-			
-			
-		
+
+
+
 		$result = $conn->query($query);
 		$pedigree = $result->fetch_assoc(); // puts the first row of the table into an array
 		$feet = floor($pedigree["height"] / 12);
 		$inches = round(($pedigree["height"] / 12 - floor($pedigree["height"] / 12)) * 12);
-		
+
 		if($pedigree["pos_id"]=="1")
 		{
 			$field = "Pitching";
@@ -139,96 +139,96 @@ function ResultToArray($result) {
 		{
 			$field = "Fielding";
 		}
-	
-	
+
+
 		//Batting Stats
-		$query = "SELECT q1.* 
-		
-			FROM batspeed_stats q1 
-			LEFT OUTER JOIN batspeed_stats q2 
-			ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected) 
-			
+		$query = "SELECT q1.*
+
+			FROM batspeed_stats q1
+			LEFT OUTER JOIN batspeed_stats q2
+			ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected)
+
 			WHERE q2.player_id IS NULL AND q1.player_id = " . $playerId;
-			
+
 		$result = $conn->query($query);
 		$batting = $result->fetch_assoc();
-		
+
 		//Strength Stats
-		$query = "SELECT q1.* 
-		
-			FROM player_strength q1 
-			LEFT OUTER JOIN player_strength q2 
-			ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected) 
-			
+		$query = "SELECT q1.*
+
+			FROM player_strength q1
+			LEFT OUTER JOIN player_strength q2
+			ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected)
+
 			WHERE q2.player_id IS NULL AND q1.player_id = " . $playerId;
-			
+
 		$result = $conn->query($query);
 		$strength = $result->fetch_assoc();
-		
+
 		//Fielding Stats
 		if($pedigree['pos_id']==1)
 		{
 			//Pitching Stats
-			$query = "SELECT q1.* 
-		
-			FROM pitcher_stats q1 
-			LEFT OUTER JOIN pitcher_stats q2 
-			ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected) 
-			
+			$query = "SELECT q1.*
+
+			FROM pitcher_stats q1
+			LEFT OUTER JOIN pitcher_stats q2
+			ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected)
+
 			WHERE q2.player_id IS NULL AND q1.player_id = " . $playerId;
 		}
-		else 
+		else
 		{
 			//Catching Stats
-			$query = "SELECT q1.* 
-		
-				FROM catcher_stats q1 
-				LEFT OUTER JOIN catcher_stats q2 
-				ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected) 
-				
+			$query = "SELECT q1.*
+
+				FROM catcher_stats q1
+				LEFT OUTER JOIN catcher_stats q2
+				ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected)
+
 				WHERE q2.player_id IS NULL AND q1.player_id = " . $playerId;
-			
+
 			$result = $conn->query($query);
 			$catching = $result->fetch_assoc();
-			
+
 			if($pedigree['pos_id']>=2 && $pedigree['pos_id']<=6)
 			{
 				//Infielder Stats
-				$query = "SELECT q1.* 
-		
-				FROM infielder_stats q1 
-				LEFT OUTER JOIN infielder_stats q2 
-				ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected) 
-				
+				$query = "SELECT q1.*
+
+				FROM infielder_stats q1
+				LEFT OUTER JOIN infielder_stats q2
+				ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected)
+
 				WHERE q2.player_id IS NULL AND q1.player_id = " . $playerId;
 			}
 			else
 			{
 				//Outfielder Stats
-				$query = "SELECT q1.* 
-		
-				FROM outfielder_stats q1 
-				LEFT OUTER JOIN outfielder_stats q2 
-				ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected) 
-				
+				$query = "SELECT q1.*
+
+				FROM outfielder_stats q1
+				LEFT OUTER JOIN outfielder_stats q2
+				ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected)
+
 				WHERE q2.player_id IS NULL AND q1.player_id = " . $playerId;
 			}
 		}
 		$result = $conn->query($query);
 		$fielding = $result->fetch_assoc();
-		
-		//Speed Stats
-		$query = "SELECT q1.* 
 
-			FROM player_speed q1 
-			LEFT OUTER JOIN player_speed q2 
-			ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected) 
-			
+		//Speed Stats
+		$query = "SELECT q1.*
+
+			FROM player_speed q1
+			LEFT OUTER JOIN player_speed q2
+			ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected)
+
 			WHERE q2.player_id IS NULL AND q1.player_id = " . $playerId;
-		
+
 		$result = $conn->query($query);
 		$speed = $result->fetch_assoc();
-		
+
 		//Batting Graph
 		$query = "SELECT *
 		FROM batspeed_stats
@@ -237,10 +237,10 @@ function ResultToArray($result) {
 		$result = $conn->query($query);
 		$battingGraphData = ResultToArray($result);
 		$batGraph = array("bat_speed", "exit_velocity");
-	
 
 
-	
+
+
 	}
 	?>
 	<?php if(isset($_GET['player'])) { ?>
@@ -341,9 +341,9 @@ function ResultToArray($result) {
 
 					</div>
 				</div>
-				
-				
-				
+
+
+
 				<div class="tabcontent" style="padding:0px;margin-top:25px;">
 					<div id="default">
 					</div>
@@ -356,7 +356,7 @@ function ResultToArray($result) {
 							</ul>
 							<div class="tabcontent">
 								<div id="bat1">
-									
+
 										<div class="leftbox">
 											<iframe width="100%" height="480" src="https://www.youtube.com/embed/wlXuqdzA1nY" frameborder="0" allowfullscreen></iframe>
 										</div>
@@ -375,10 +375,10 @@ function ResultToArray($result) {
 												<li class="stat"><?php echo $strength["dead_lift"]?> lbs</li>
 											</ul>
 										</div>
-									
+
 								</div>
 								<div id="ball1">
-									
+
 										<div class="leftbox">
 											<iframe width="100%" height="480" src="https://www.youtube.com/embed/wlXuqdzA1nY" frameborder="0" allowfullscreen></iframe>
 										</div>
@@ -408,10 +408,10 @@ function ResultToArray($result) {
 											</ul>
 											<?php } ?>
 										</div>
-									
+
 								</div>
 								<div id="run1">
-									
+
 										<div class="leftbox">
 											<iframe width="100%" height="480" src="https://www.youtube.com/embed/wlXuqdzA1nY" frameborder="0" allowfullscreen></iframe>
 										</div>
@@ -430,7 +430,7 @@ function ResultToArray($result) {
 												<li class="stat"><?php echo $speed["reach"]?> inches</li>
 											</ul>
 										</div>
-									
+
 								</div>
 							</div>
 						</div>
@@ -524,7 +524,7 @@ function ResultToArray($result) {
 								<div id="bat3">
 									<div class="leftbox">
 											<img style="width:100%;height:480px;" src="images/graph.jpg">
-											
+
 									</div>
 									<div class="rightbox">
 										<ul class="stats">
@@ -641,13 +641,13 @@ function ResultToArray($result) {
 					</span>
 				</div>
 				<div style="margin-top:15px; margin-bottom:15px;">
-					
+
 				</div>
 			</div>
 		</div>
-		
+
 	<?php } else { ?>
-	
+
 		<div class="main">
 			<div class="space" style="margin:0px;">
 
@@ -658,7 +658,7 @@ function ResultToArray($result) {
 				<img class="players" src="images/logo.png" style="border:none;">
 			</div>
 		</div>
-	<?php } ?>		
+	<?php } ?>
     </div>
 
     <!-- Bootstrap core JavaScript -->
@@ -672,12 +672,12 @@ function ResultToArray($result) {
     <script type="text/javascript" src="tablesorter/js/jquery.tablesorter.js"></script>
     <script src="Chart.js/Chart.min.js"></script>
     <script src="Chart.Scatter.js/Chart.Scatter.min.js"></script>
-	
+
 	<script>
         $(document).ready(function(){
             $(function(){
                 $("table").tablesorter();
-				
+
 				var options = {
 					scaleFontColor : "#ffffff",
 					scaleGridLineColor: "#9d9d9d",
@@ -688,7 +688,7 @@ function ResultToArray($result) {
                     scaleDateTimeFormat: "mmm d, yyyy",
                     scaleLabel: "<%=value%> mph"
                 };
-				
+
                 var battingCTX = $("#battingGraph").get(0).getContext("2d");
                 var battingData = [
                     {
@@ -713,10 +713,10 @@ function ResultToArray($result) {
                     },
                 ];
 				var myBattingChart = new Chart(battingCTX).Scatter(battingData, options);
-				
 
-				
-				
+
+
+
                 ctx = $("#myRadarChart").get(0).getContext("2d");
                 data = {
                     labels: ["Running Speed", "Arm Strength", "Hitting for Average", "Hitting for Power", "Fielding"],
@@ -736,7 +736,7 @@ function ResultToArray($result) {
                 options = {
 					// String - Colour of the grid lines
 					scaleGridLineColor: "rgba(220,220,220,1)",
-					
+
                     //Boolean - Whether to show lines for each scale point
                     scaleShowLine : true,
 
@@ -748,7 +748,7 @@ function ResultToArray($result) {
 
                     // Boolean - Whether the scale should begin at zero
                     scaleBeginAtZero : true,
-					
+
 					scaleFontColor : "#ffffff",
 
                     //String - Colour of the angle line
