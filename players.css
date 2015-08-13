@@ -1,15 +1,14 @@
 body{
-	background-image:  url(images/baseball.jpg);
-	background-repeat: no-repeat;
+	background-image:  url(images/diamond2.jpg);
 }
 .content{
 	width: 100%;
-	min-width: 1875px;
+	min-width: 1500px;
 }
 .main {
     display: inline-block;
     width: 70%;
-	min-width: 1250px;
+	min-width: 900px;
     margin: 45px auto;
 }
 .bg-left {
@@ -30,27 +29,26 @@ body{
 }
 
 .basesegment{
-	background-color: #434343;
+	background-color: #222222;
 	border: solid;
-	border-color: #666666;
+	border-color: #555555;
 	height: 400px;
 }
 .tabbedsegment{
-	background-color: #434343;
+	background-color: #222222;
 	border: solid;
-	border-color: #666666;
+	border-color: #555555;
 	height: 600px;
 }
 .commentsegment{
-	background-color: #434343;
+	background-color: #222222;
 	border: solid;
-	border-color: #666666;
+	border-color: #555555;
 	margin-top: 25px;
 	height: 300px;
 }
 
 .leftbox{
-	padding: 5px;
 	float: left;
 	width: 66%;
 	height: 480px;
@@ -69,21 +67,14 @@ ul.tabs{
 	padding-right: 10px;
     font-size: 0;
     margin:0;
-	width: 100%;
     list-style-type: none;
     text-align: center; /*set to left, center, or right to align the tabs as desired*/
 	display: flex;
 	justify-content: center;
 }
-ul.tabs > li.three{
+ul.tabs > li{
     display: flex;
-	margin-right: 20px;
-    margin-top: 20px;
-	margin-bottom: 5px;
-}
-ul.tabs > li.four{
-    display: flex;
-	width: 25%;
+	margin-right: 30px;
     margin-top: 20px;
 	margin-bottom: 5px;
 }
@@ -95,7 +86,7 @@ ul.tabs > li > a{
 	margin-right: 50px;
 	margin-left: 50px;
 	font-family: "Pathway Gothic One", sans-serif;
-	font-size: 18pt;
+	font-size: 16pt;
 	text-transform: uppercase;
 }
 ul.tabs li a:visited{
@@ -121,10 +112,7 @@ div.tabcontent{
 }
 
 .space {
-    margin-top: 10px;
-	margin-bottom: 10px;
-	margin-left:15px;
-	margin-right: 15px;
+    margin: 15px;
     display: block;
 }
 
@@ -140,29 +128,43 @@ div.tabcontent{
 img.players {
     width: 100%;
 	border: solid;
-	border-color: #666666;
+	border-color: #555555;
 }
 img.vid{
 	width: 100%;
 	border: solid;
-	border-color: #666666;
+	border-color: #333333;
 }
 img.sidebar{
 	height: 25px;
 }
 
 h1 {
-    margin: 0;
-	border: solid #666666;
-	padding: 5px;
+    padding: 10px;
+	font-size: 20pt;
+	color: white;
+    background-color: #029EDC;
+	font-family: 'Russo One', sans-serif;
+	text-transform: uppercase;
+	margin: 20px;
+	font-style: italic;
+}
+h1.light {
+	font-family: 'Russo One', sans-serif;
+    color: black;
+    background-color: white;
+	font-size: 18pt;
+}
+h1.small{
+	margin: 0;
+	border: solid #555555;
 	border-top: none;
 	color: white;
-	background-color: #434343;
-	font-size: 14pt;
+	background-color: #333333;
+	font-size: auto;
 	font-family: 'Russo One', sans-serif;
 	text-transform: uppercase;
 }
-
 
 ul.sidebar{
 	width:100%;
@@ -171,8 +173,8 @@ ul.sidebar{
 	overflow:hidden;
 }
 ul.sidebar > li{
-	background-color: #434343;
-	border: 1px solid #666666;
+	background-color: #333333;
+	border: 1px solid #555555;
 	width: 100%;
 	font-family: 'Lato', sans-serif;
 	padding: 5px;
@@ -188,32 +190,28 @@ ul.sidebar > li > a{
 }
 
 ul.profile{
-	margin-top: 40px;
+	margin-top: 25px;
 	width:100%;
 	padding: 5px;
 	overflow:hidden;
-	border-top:1px solid #029EDC;
-	border-bottom:1px solid #029EDC;
+	border-top:1px solid #444444;
+	border-bottom:1px solid #444444;
 }
 ul.profile > li.cat{
-	margin-bottom: 10px;
-	border-bottom: 1px solid #666666;
 	width: 25%;
 	font-family: 'Lato', sans-serif;
-	padding-bottom: 0px;
-	font-size: 13pt;
+	padding-bottom: 5px;
+	font-size: 18pt;
 	line-height:1.5em;
 	float:left;
 	display:inline;
-	color: #bbbbbb;
+	color: #adadad;
 }
 ul.profile > li.stat{
-	margin-bottom: 10px;
-	border-bottom: 1px solid #666666;
 	width: 25%;
 	font-family: 'Lato', sans-serif;
-	padding-bottom: 0px;
-	font-size: 13pt;
+	padding-bottom: 5px;
+	font-size: 18pt;
 	line-height:1.5em;
 	float:left;
 	display:inline;
@@ -223,32 +221,28 @@ ul.profile > li.stat{
 
 ul.stats{
   width:100%;
-  height: 460px;
   margin-bottom:20px;
   overflow:hidden;
-  border-top:1px solid #029EDC;
+  border-top:1px solid #444444;
+  border-bottom:1px solid #444444;
 }
 ul.stats > li.cat{
-	border-bottom: 1px solid #666666;
-	margin-top: 5px;
-	width: 50%;
+	width: 100%;
 	font-family: 'Lato', sans-serif;
 	padding: 5px;
-	font-size: 12pt;
+	font-size: 16pt;
 	line-height:1.5em;
 	float:left;
 	display:inline;
-	color: #bbbbbb;
+	color: #adadad;
 }
 ul.stats > li.stat{
-	margin-top: 5px;
-	border-bottom: 1px solid #666666;
-	width: 50%;
+	width: 100%;
 	color: white;
 	text-decoration: bold;
 	font-family: 'Lato', sans-serif;
 	padding: 5px;
-	font-size: 12pt;
+	font-size: 16pt;
 	line-height:1.5em;
 	float:left;
 	display:inline;
@@ -266,38 +260,14 @@ ul.name{
   
 }
 ul.name > li{
-	width: 20%;
+	width: 33%;
 	background-color: #029EDC;
 	padding: 5px;
 	font-size: 16pt;
 	line-height:1.5em;
-	height: 40px;
 	float:left;
 	display:inline;
 	text-align: center;
-	vertical-align: middle;
-}
-ul.name > li.small{
-	width: 20%;
-	background-color: #029EDC;
-	padding: 5px;
-	font-size: 11pt;
-	line-height:1.5em;
-	padding-top: 10px;
-	height: 40px;
-	float:left;
-	display:inline;
-	text-align: center;
-	vertical-align: middle;
-}
-ul.name > li > a{
-	color: white;
-	padding-left: 10px;
-	padding-right: 10px;
-}
-ul.name > li > a:hover{
-	border: 1px solid white;
-	text-decoration: none;
 }
 
 .detailBox {
@@ -305,7 +275,7 @@ ul.name > li > a:hover{
     border:1px solid #bbb;
 }
 .titleBox {
-    background-color:#434343;
+    background-color:#444444;
     padding:10px;
 }
 .titleBox label{
@@ -363,25 +333,4 @@ ul.name > li > a:hover{
 .actionBox {
     border-top:1px dotted #bbb;
     padding:10px;
-}
-
-
-
-p.trigger{
-    margin-bottom:7px;
-    margin-top:-5px;
-}
-
-.toggle_container{
-    margin-bottom:10px;
-}
-
-.toggle_container p{
-    margin:0px;
-}
-
-.toggle_container{
-    background:#f0f0f0;
-    clear: both;
-    font-size:100%;
 }
