@@ -39,12 +39,13 @@
                         <li role="separator" class="divider"></li>
                         <li class="dropdown-header">Graduation Year</li>
                         <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#">2018</a>
+                            <a tabindex="-1" href="rankings.php">2018</a>
                             <ul class="dropdown-menu">
                                 <li class="dropdown-header">Specialty</li>
-                                <li><a href="#">Hitting</a></li>
-                                <li><a href="#">Pitching/Fielding</a></li>
-                                <li><a href="#">Speed</a></li>
+                                <li><a href="rankings.php#hitting">Hitting</a></li>
+                                <li><a href="rankings.php#pitching">Pitching</a></li>
+                                <li><a href="rankings.php#fielding">Fielding</a></li>
+                                <li><a href="rankings.php#speed">Speed</a></li>
                             </ul>
                         </li>
                         <li class="dropdown-submenu">
