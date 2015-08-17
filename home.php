@@ -132,7 +132,7 @@
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-        <img class="logo" src="images/logo metal.png" width="200" height="171" alt="Elite Level Prospects">
+        <img class="logo" src="images/logo.png" width="200" height="200" alt="Elite Level Prospects">
     </div>
 
     <div class="container marketing">
