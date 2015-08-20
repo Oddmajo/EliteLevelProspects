@@ -5,7 +5,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "elp statistics";
+$dbname = "elitelevelprospects";
 
 // Player id
 if(isset($_GET['player']))
@@ -93,7 +93,7 @@ function ResultToArray($result) {
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="Jacob Nash">
-
+	
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/dropdown.css" rel="stylesheet">
@@ -106,31 +106,31 @@ function ResultToArray($result) {
 	<!-- Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Russo+One|Pathway+Gothic+One' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Lato|Oswald|Montserrat' rel='stylesheet' type='text/css'>
-
-
+	
+	
 	<?php
 	if(isset($playerId))
 	{
-		$query = "SELECT
-				player_details.*,
-				school.*,
+		$query = "SELECT 
+				player_details.*, 
+				school.*, 
 				player_position.*, positions.*
-
-			FROM
+				
+			FROM 
 				player_details, school, player_position, positions
-
-
-			WHERE player_details.player_id = " . $playerId . "
-			AND player_details.school_id = school.school_id
+				
+				
+			WHERE player_details.player_id = " . $playerId . " 
+			AND player_details.school_id = school.school_id 
 			AND player_position.player_id = " . $playerId . " AND positions.pos_id = player_position.pos_id";
-
-
-
+			
+			
+		
 		$result = $conn->query($query);
 		$pedigree = $result->fetch_assoc(); // puts the first row of the table into an array
 		$feet = floor($pedigree["height"] / 12);
 		$inches = round(($pedigree["height"] / 12 - floor($pedigree["height"] / 12)) * 12);
-
+		
 		if($pedigree["pos_id"]=="1")
 		{
 			$field = "Pitching";
@@ -139,96 +139,96 @@ function ResultToArray($result) {
 		{
 			$field = "Fielding";
 		}
-
-
+	
+	
 		//Batting Stats
-		$query = "SELECT q1.*
-
-			FROM batspeed_stats q1
-			LEFT OUTER JOIN batspeed_stats q2
-			ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected)
-
+		$query = "SELECT q1.* 
+		
+			FROM batspeed_stats q1 
+			LEFT OUTER JOIN batspeed_stats q2 
+			ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected) 
+			
 			WHERE q2.player_id IS NULL AND q1.player_id = " . $playerId;
-
+			
 		$result = $conn->query($query);
 		$batting = $result->fetch_assoc();
-
+		
 		//Strength Stats
-		$query = "SELECT q1.*
-
-			FROM player_strength q1
-			LEFT OUTER JOIN player_strength q2
-			ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected)
-
+		$query = "SELECT q1.* 
+		
+			FROM player_strength q1 
+			LEFT OUTER JOIN player_strength q2 
+			ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected) 
+			
 			WHERE q2.player_id IS NULL AND q1.player_id = " . $playerId;
-
+			
 		$result = $conn->query($query);
 		$strength = $result->fetch_assoc();
-
+		
 		//Fielding Stats
 		if($pedigree['pos_id']==1)
 		{
 			//Pitching Stats
-			$query = "SELECT q1.*
-
-			FROM pitcher_stats q1
-			LEFT OUTER JOIN pitcher_stats q2
-			ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected)
-
+			$query = "SELECT q1.* 
+		
+			FROM pitcher_stats q1 
+			LEFT OUTER JOIN pitcher_stats q2 
+			ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected) 
+			
 			WHERE q2.player_id IS NULL AND q1.player_id = " . $playerId;
 		}
-		else
+		else 
 		{
 			//Catching Stats
-			$query = "SELECT q1.*
-
-				FROM catcher_stats q1
-				LEFT OUTER JOIN catcher_stats q2
-				ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected)
-
+			$query = "SELECT q1.* 
+		
+				FROM catcher_stats q1 
+				LEFT OUTER JOIN catcher_stats q2 
+				ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected) 
+				
 				WHERE q2.player_id IS NULL AND q1.player_id = " . $playerId;
-
+			
 			$result = $conn->query($query);
 			$catching = $result->fetch_assoc();
-
+			
 			if($pedigree['pos_id']>=2 && $pedigree['pos_id']<=6)
 			{
 				//Infielder Stats
-				$query = "SELECT q1.*
-
-				FROM infielder_stats q1
-				LEFT OUTER JOIN infielder_stats q2
-				ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected)
-
+				$query = "SELECT q1.* 
+		
+				FROM infielder_stats q1 
+				LEFT OUTER JOIN infielder_stats q2 
+				ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected) 
+				
 				WHERE q2.player_id IS NULL AND q1.player_id = " . $playerId;
 			}
 			else
 			{
 				//Outfielder Stats
-				$query = "SELECT q1.*
-
-				FROM outfielder_stats q1
-				LEFT OUTER JOIN outfielder_stats q2
-				ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected)
-
+				$query = "SELECT q1.* 
+		
+				FROM outfielder_stats q1 
+				LEFT OUTER JOIN outfielder_stats q2 
+				ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected) 
+				
 				WHERE q2.player_id IS NULL AND q1.player_id = " . $playerId;
 			}
 		}
 		$result = $conn->query($query);
 		$fielding = $result->fetch_assoc();
-
+		
 		//Speed Stats
-		$query = "SELECT q1.*
+		$query = "SELECT q1.* 
 
-			FROM player_speed q1
-			LEFT OUTER JOIN player_speed q2
-			ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected)
-
+			FROM player_speed q1 
+			LEFT OUTER JOIN player_speed q2 
+			ON (q1.player_id = q2.player_id AND q1.date_stats_collected < q2.date_stats_collected) 
+			
 			WHERE q2.player_id IS NULL AND q1.player_id = " . $playerId;
-
+		
 		$result = $conn->query($query);
 		$speed = $result->fetch_assoc();
-
+		
 		//Batting Graph
 		$query = "SELECT *
 		FROM batspeed_stats
@@ -237,14 +237,32 @@ function ResultToArray($result) {
 		$result = $conn->query($query);
 		$battingGraphData = ResultToArray($result);
 		$batGraph = array("bat_speed", "exit_velocity");
-
-
-
+		
+		//Fielding Graph
+		$query = "SELECT *
+		FROM pitcher_stats
+		WHERE player_id = " . $playerId . "
+		ORDER BY date_stats_collected";
+		
+		$result = $conn->query($query);
+		$pitchingGraphData = ResultToArray($result);
+		$pitchingGraph = array("two_seem", "four_seem","changeball","curveball","slider","knuckleball");
+		
+		//Speed Graph
+		$query = "SELECT *
+		FROM player_speed
+		WHERE player_id = " . $playerId . "
+		ORDER BY date_stats_collected";
+		
+		$result = $conn->query($query);
+		$speedGraphData = ResultToArray($result);
+		$speedGraph = array("sixty_yard_time", "onetwenty_yard_time", "vertical_leap", "shuttle_run", "reach");
+			
 
 	}
 	?>
 	<?php if(isset($_GET['player'])) { ?>
-    <title>Prospect: <?php echo $row["first_name"]?>&nbsp<?php echo $row["last_name"]?> </title>
+    <title>Prospect: <?php echo $pedigree["first_name"]?>&nbsp<?php echo $pedigree["last_name"]?> </title>
 	<?php } else { ?>
 	<title>Prospect Lookup</title>
 	<?php } ?>
@@ -267,17 +285,20 @@ function ResultToArray($result) {
 				<?php
 						$username = $_SESSION['username'];
 				?>
-				<h1>
+				<h1 style="border-top:none;border-bottom:none;">
 					<?php echo $username; ?>
 				</h1>
 				<ul class="sidebar">
-					<li>1. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a href="players.php?player=1&tempFollow=1&tempMod=0">Altemus John</a></li>
-					<li>2. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a href="players.php?player=2&tempFollow=1&tempMod=0">Buonamici Eric</a></li>
-					<li>3. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a href="players.php?player=3&tempFollow=1&tempMod=0">Chandler Lovell</a></li>
-					<li>4. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a href="players.php?player=4&tempFollow=1&tempMod=0">Coy Joe</a></li>
-					<li>5. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a href="players.php?player=5&tempFollow=1&tempMod=0">Foltz Scott</a></li>
-					<li>6. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a href="players.php?player=6&tempFollow=1&tempMod=0">Leopold Christopher</a></li>
-					<li>7. <a href="players.php"> TEST LINK</a></li>
+					<li class="left">1. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a href="players.php?player=1&tempFollow=1&tempMod=0">John Altemus </a></li>
+					<li class="left">2. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a href="players.php?player=2&tempFollow=1&tempMod=0">Eric Buonamici </a></li>
+					<li class="left">3. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a href="players.php?player=3&tempFollow=1&tempMod=0">Lovell Chandler </a></li>
+					<li class="left">4. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a href="players.php?player=4&tempFollow=1&tempMod=0">Joe Coy </a></li>
+					<li class="left">5. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a href="players.php?player=5&tempFollow=1&tempMod=0">Scott Foltz </a></li>
+					<li class="left">6. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a href="players.php?player=6&tempFollow=1&tempMod=0">Christopher Leopold </a></li>
+					<li class="left">7. <a href="players.php"> TEST LINK</a></li>
+					<li class="left">8. <a href="players.php"> TEST LINK</a></li>
+					<li class="left">9. <a href="players.php"> TEST LINK</a></li>
+					<li class="left">10. <a href="players.php"> TEST LINK</a></li>
 				</ul>
 			</div>
 		</div>
@@ -314,20 +335,20 @@ function ResultToArray($result) {
 									<li class="stat"><?php echo $pedigree["weight"];?> lbs</li>
 									<li class="cat">Date of Birth: </li>
 									<li class="stat"><?php echo $pedigree["dob"];?></li>
+									<li class="cat">Graduating Year: </li>
+									<li class="stat"><?php echo $pedigree["grad_year"];?></li>
 									<li class="cat">School: </li>
 									<li class="stat"><?php echo $pedigree["name"];?></li>
-									<li class="cat">Year: </li>
-									<li class="stat"><?php echo $pedigree["grad_year"];?></li>
+									<li class="cat">GPA: </li>
+									<li class="stat"><?php echo $pedigree["gpa"];?></li>
 									<li class="cat">City: </li>
 									<li class="stat"><?php echo $pedigree["city"];?></li>
-									<li class="cat">Rank: </li>
-									<li class="stat">Implement This</li>
 									<li class="cat">State: </li>
 									<li class="stat"><?php echo $pedigree["state"];?></li>
-									<li class="cat" style="border:none; margin:0px;">GPA: </li>
-									<li class="stat" style="border:none; margin:0px;"><?php echo $pedigree["gpa"];?></li>
-									<li class="cat" style="border:none; margin:0px;">ACT Score: </li>
-									<li class="stat" style="border:none; margin:0px;">36</li>
+									<li class="cat" style="border:none; margin:0px;">Rank: </li>
+									<li class="stat" style="border:none; margin:0px;">Implement This</li>
+									<li class="cat" style="border:none; margin:0px;">Rating: </li>
+									<li class="stat" style="border:none; margin:0px;">Implement This</li>
 								</ul>
 							</div>
 							<ul class="tabs">
@@ -341,9 +362,9 @@ function ResultToArray($result) {
 
 					</div>
 				</div>
-
-
-
+				
+				
+				
 				<div class="tabcontent" style="padding:0px;margin-top:25px;">
 					<div id="default">
 					</div>
@@ -356,12 +377,12 @@ function ResultToArray($result) {
 							</ul>
 							<div class="tabcontent">
 								<div id="bat1">
-
+									
 										<div class="leftbox">
 											<iframe width="100%" height="480" src="https://www.youtube.com/embed/wlXuqdzA1nY" frameborder="0" allowfullscreen></iframe>
 										</div>
 										<div class="rightbox">
-											Date Updated: IMPLEMENT ME
+											Date Updated: <?php echo $batting["date_stats_collected"]?>
 											<ul class="stats">
 												<li class="cat">Bat Speed:</li>
 												<li class="stat"><?php echo $batting["bat_speed"]?> mph</li>
@@ -375,15 +396,15 @@ function ResultToArray($result) {
 												<li class="stat"><?php echo $strength["dead_lift"]?> lbs</li>
 											</ul>
 										</div>
-
+									
 								</div>
 								<div id="ball1">
-
+									
 										<div class="leftbox">
 											<iframe width="100%" height="480" src="https://www.youtube.com/embed/wlXuqdzA1nY" frameborder="0" allowfullscreen></iframe>
 										</div>
 										<div class="rightbox">
-											Date Updated: IMPLEMENT ME
+											Date Updated: <?php echo $fielding["date_stats_collected"]?>
 											<?php if(($pedigree["pos_id"])==1) { ?>
 											<ul class="stats">
 												<li class="cat">Two Seem:</li>
@@ -408,29 +429,29 @@ function ResultToArray($result) {
 											</ul>
 											<?php } ?>
 										</div>
-
+									
 								</div>
 								<div id="run1">
-
+									
 										<div class="leftbox">
 											<iframe width="100%" height="480" src="https://www.youtube.com/embed/wlXuqdzA1nY" frameborder="0" allowfullscreen></iframe>
 										</div>
 										<div class="rightbox">
-											Date Updated: IMPLEMENT ME
+											Date Updated: <?php echo $speed["date_stats_collected"]?>
 											<ul class="stats">
 												<li class="cat">60 Yard Time:</li>
 												<li class="stat"><?php echo $speed["sixty_yard_time"]?> seconds</li>
 												<li class="cat">120 Yard Time:</li>
 												<li class="stat"><?php echo $speed["onetwenty_yard_time"]?> seconds</li>
-												<li class="cat">Vertical Leap:</li>
-												<li class="stat"><?php echo $speed["vertical_leap"]?> inches</li>
 												<li class="cat">Shuttle Run:</li>
 												<li class="stat"><?php echo $speed["shuttle_run"]?> seconds</li>
+												<li class="cat">Vertical Leap:</li>
+												<li class="stat"><?php echo $speed["vertical_leap"]?> inches</li>
 												<li class="cat">Reach:</li>
 												<li class="stat"><?php echo $speed["reach"]?> inches</li>
 											</ul>
 										</div>
-
+									
 								</div>
 							</div>
 						</div>
@@ -445,15 +466,14 @@ function ResultToArray($result) {
 							<div class="tabcontent">
 								<div id="bat2">
 									<div class="leftbox">
-											<?php $battingGraphProjections = Project($battingGraphData, $batGraph, 2); ?>
 											<canvas id="battingGraph" width="800px" height="480px"></canvas>
 										</div>
 										<div class="rightbox">
 											<ul class="stats">
 												<li class="cat">Bat Speed:</li>
-												<li class="stat"><?php echo $batting["bat_speed"]?> mph</li>
+												<li class="stat"style="color:#8dc8e0;"><?php echo $batting["bat_speed"]?> mph</li>
 												<li class="cat">Velocity:</li>
-												<li class="stat"><?php echo $batting["exit_velocity"]?> mph</li>
+												<li class="stat"style="color:#029EDC;"><?php echo $batting["exit_velocity"]?> mph</li>
 												<li class="cat">Bench Press:</li>
 												<li class="stat"><?php echo $strength["bench_press"]?> lbs</li>
 												<li class="cat">Squat:</li>
@@ -465,23 +485,23 @@ function ResultToArray($result) {
 								</div>
 								<div id="ball2">
 									<div class="leftbox">
-											<img style="width:100%;height:480px;" src="images/graph.jpg">
+											<canvas id="pitchingGraph" width="800px" height="480px"></canvas>
 										</div>
 										<div class="rightbox">
 											<?php if(($pedigree["pos_id"])==1) { ?>
 											<ul class="stats">
 												<li class="cat">Two Seem:</li>
-												<li class="stat"><?php echo $fielding["two_seem"]?> mph</li>
+												<li class="stat"style="color:#8dc8e0;"><?php echo $fielding["two_seem"]?> mph</li>
 												<li class="cat">Four Seem:</li>
-												<li class="stat"><?php echo $fielding["four_seem"]?> mph</li>
+												<li class="stat"style="color:#029EDC;"><?php echo $fielding["four_seem"]?> mph</li>
 												<li class="cat">Changeball:</li>
-												<li class="stat"><?php echo $fielding["changeball"]?> mph</li>
+												<li class="stat"style="color:#5edee5;"><?php echo $fielding["changeball"]?> mph</li>
 												<li class="cat">Curveball:</li>
-												<li class="stat"><?php echo $fielding["curveball"]?> mph</li>
+												<li class="stat"style="color:#c9c9c9;"><?php echo $fielding["curveball"]?> mph</li>
 												<li class="cat">Slider:</li>
-												<li class="stat"><?php echo $fielding["slider"]?> mph</li>
+												<li class="stat"style="color:#ffffff;"><?php echo $fielding["slider"]?> mph</li>
 												<li class="cat">Knuckleball:</li>
-												<li class="stat"><?php echo $fielding["knuckleball"]?> mph</li>
+												<li class="stat"style="color:#00bfa5;"><?php echo $fielding["knuckleball"]?> mph</li>
 											</ul>
 											<?php } else { ?>
 											<ul class="stats">
@@ -495,18 +515,20 @@ function ResultToArray($result) {
 								</div>
 								<div id="run2">
 									<div class="leftbox">
-											<img style="width:100%;height:480px;" src="images/graph.jpg">
+											<canvas id="speedGraph" width="800px" height="480px"></canvas>
 										</div>
 										<div class="rightbox">
 											<ul class="stats">
-												<li class="cat">Stat 1:</li>
-												<li class="stat">numbers</li>
-												<li class="cat">Stat 2:</li>
-												<li class="stat">numbers</li>
-												<li class="cat">Stat 3:</li>
-												<li class="stat">numbers</li>
-												<li class="cat">Stat 4:</li>
-												<li class="stat">numbers</li>
+												<li class="cat">60 Yard Time:</li>
+												<li class="stat"style="color:#8dc8e0;"><?php echo $speed["sixty_yard_time"]?> seconds</li>
+												<li class="cat">120 Yard Time:</li>
+												<li class="stat"style="color:#029EDC;"><?php echo $speed["onetwenty_yard_time"]?> seconds</li>
+												<li class="cat">Shuttle Run:</li>
+												<li class="stat"style="color:#5edee5;"><?php echo $speed["shuttle_run"]?> seconds</li>
+												<li class="cat">Vertical Leap:</li>
+												<li class="stat"><?php echo $speed["vertical_leap"]?> inches</li>
+												<li class="cat">Reach:</li>
+												<li class="stat"><?php echo $speed["reach"]?> inches</li>
 											</ul>
 										</div>
 								</div>
@@ -523,57 +545,74 @@ function ResultToArray($result) {
 							<div class="tabcontent">
 								<div id="bat3">
 									<div class="leftbox">
-											<img style="width:100%;height:480px;" src="images/graph.jpg">
-
+										PROJECTIONS TO BE IMPLEMENTED
 									</div>
 									<div class="rightbox">
+										PROJECTIONS TO BE IMPLEMENTED
 										<ul class="stats">
 											<li class="cat">Bat Speed:</li>
-											<li class="stat">numbers</li>
+											<li class="stat"><?php echo $batting["bat_speed"]?> mph</li>
 											<li class="cat">Velocity:</li>
-											<li class="stat">numbers</li>
+											<li class="stat"><?php echo $batting["exit_velocity"]?> mph</li>
 											<li class="cat">Bench Press:</li>
-											<li class="stat">numbers</li>
+											<li class="stat"><?php echo $strength["bench_press"]?> lbs</li>
 											<li class="cat">Squat:</li>
-											<li class="stat">numbers</li>
+											<li class="stat"><?php echo $strength["squat"]?> lbs</li>
 											<li class="cat">Dead Lift:</li>
-											<li class="stat">numbers</li>
+											<li class="stat"><?php echo $strength["dead_lift"]?> lbs</li>
 										</ul>
 									</div>
 								</div>
 								<div id="ball3">
 									<div class="leftbox">
-											<img style="width:100%;height:480px;" src="images/graph.jpg">
-										</div>
-										<div class="rightbox">
-											<ul class="stats">
-												<li class="cat">Stat 1:</li>
-												<li class="stat">numbers</li>
-												<li class="cat">Stat 2:</li>
-												<li class="stat">numbers</li>
-												<li class="cat">Stat 3:</li>
-												<li class="stat">numbers</li>
-												<li class="cat">Stat 4:</li>
-												<li class="stat">numbers</li>
-											</ul>
-										</div>
+										PROJECTIONS TO BE IMPLEMENTED
+									</div>
+									<div class="rightbox">
+										PROJECTIONS TO BE IMPLEMENTED
+										<?php if(($pedigree["pos_id"])==1) { ?>
+										<ul class="stats">
+											<li class="cat">Two Seem:</li>
+											<li class="stat"><?php echo $fielding["two_seem"]?> mph</li>
+											<li class="cat">Four Seem:</li>
+											<li class="stat"><?php echo $fielding["four_seem"]?> mph</li>
+											<li class="cat">Changeball:</li>
+											<li class="stat"><?php echo $fielding["changeball"]?> mph</li>
+											<li class="cat">Curveball:</li>
+											<li class="stat"><?php echo $fielding["curveball"]?> mph</li>
+											<li class="cat">Slider:</li>
+											<li class="stat"><?php echo $fielding["slider"]?> mph</li>
+											<li class="cat">Knuckleball:</li>
+											<li class="stat"><?php echo $fielding["knuckleball"]?> mph</li>
+										</ul>
+										<?php } else { ?>
+										<ul class="stats">
+											<li class="cat">Throwing Speed:</li>
+											<li class="stat"><?php echo $fielding["throwing_speed"]?> mph</li>
+											<li class="cat">Pop Time:</li>
+											<li class="stat"><?php echo $catching["pop_time"]?> seconds</li>
+										</ul>
+										<?php } ?>
+									</div>
 								</div>
 								<div id="run3">
 									<div class="leftbox">
-											<img style="width:100%;height:480px;" src="images/graph.jpg">
-										</div>
-										<div class="rightbox">
-											<ul class="stats">
-												<li class="cat">Stat 1:</li>
-												<li class="stat">numbers</li>
-												<li class="cat">Stat 2:</li>
-												<li class="stat">numbers</li>
-												<li class="cat">Stat 3:</li>
-												<li class="stat">numbers</li>
-												<li class="cat">Stat 4:</li>
-												<li class="stat">numbers</li>
-											</ul>
-										</div>
+										PROJECTIONS TO BE IMPLEMENTED
+									</div>
+									<div class="rightbox">
+										PROJECTIONS TO BE IMPLEMENTED
+										<ul class="stats">
+											<li class="cat">60 Yard Time:</li>
+											<li class="stat"><?php echo $speed["sixty_yard_time"]?> seconds</li>
+											<li class="cat">120 Yard Time:</li>
+											<li class="stat"><?php echo $speed["onetwenty_yard_time"]?> seconds</li>
+											<li class="cat">Shuttle Run:</li>
+											<li class="stat"><?php echo $speed["shuttle_run"]?> seconds</li>
+											<li class="cat">Vertical Leap:</li>
+											<li class="stat"><?php echo $speed["vertical_leap"]?> inches</li>
+											<li class="cat">Reach:</li>
+											<li class="stat"><?php echo $speed["reach"]?> inches</li>
+										</ul>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -631,8 +670,8 @@ function ResultToArray($result) {
 				<?php } ?>
 			</div>
 		</div>
-		<div class="bg-right">
-			<div class="space">
+		<div class="bg-right"style="height:100%;">
+			<div class="space"style="height:100%;">
 				<img class="players" src="images/logo.png" style="border:none;">
 				<div class="input-group">
 					<input type="text" class="form-control" placeholder="Search Prospects">
@@ -640,25 +679,106 @@ function ResultToArray($result) {
 						<button class="btn btn-default" type="button">Go!</button>
 					</span>
 				</div>
-				<div style="margin-top:15px; margin-bottom:15px;">
-
+				<div class="sidebarsegment" style="background:none;border:none;">
+					<ul class="sidebar" style="height:100%;">
+						<li class="dropdown" style="text-align:center;">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">2018 <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="players.php">Hitting</a></li>
+								<li><a href="players.php">Pitching/Fielding</a></li>
+								<li><a href="players.php">Speed</a></li>
+							</ul>
+						</li>
+						<li class="dropdown" style="text-align:center;">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">2017 <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="players.php">Hitting</a></li>
+								<li><a href="players.php">Pitching/Fielding</a></li>
+								<li><a href="players.php">Speed</a></li>
+							</ul>
+						</li>
+						<li class="dropdown" style="text-align:center;">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">2016 <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="players.php">Hitting</a></li>
+								<li><a href="players.php">Pitching/Fielding</a></li>
+								<li><a href="players.php">Speed</a></li>
+							</ul>
+						</li>
+						<li class="dropdown" style="text-align:center;">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">2015 <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="players.php">Hitting</a></li>
+								<li><a href="players.php">Pitching/Fielding</a></li>
+								<li><a href="players.php">Speed</a></li>
+							</ul>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
-
+		
 	<?php } else { ?>
-
+	
 		<div class="main">
 			<div class="space" style="margin:0px;">
-
+				<div class="search"style="float:left;">
+				</div>
+				<div class="search"style="display:inline-block;width:40%;">
+				<img class="players" src="images/logo.png" style="border:none;">
+				</div>
+				<div class="search"style="float:right;">
+				</div>
+				<div class="space"style="margin-left:250px;margin-right:250px;">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Search Prospects">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button">Go!</button>
+						</span>
+					</div>
+					<ul class="search">
+						<li class="dropdown" style="width:25%;">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">2015 <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="players.php">Hitting</a></li>
+								<li><a href="players.php">Pitching/Fielding</a></li>
+								<li><a href="players.php">Speed</a></li>
+							</ul>
+						</li>
+						<li class="dropdown" style="width:25%;">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">2016 <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="players.php">Hitting</a></li>
+								<li><a href="players.php">Pitching/Fielding</a></li>
+								<li><a href="players.php">Speed</a></li>
+							</ul>
+						</li>
+						<li class="dropdown" style="width:25%;">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">2017 <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="players.php">Hitting</a></li>
+								<li><a href="players.php">Pitching/Fielding</a></li>
+								<li><a href="players.php">Speed</a></li>
+							</ul>
+						</li>
+						<li class="dropdown" style="width:25%;">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">2018 <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="players.php">Hitting</a></li>
+								<li><a href="players.php">Pitching/Fielding</a></li>
+								<li><a href="players.php">Speed</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 		<div class="bg-right">
 			<div class="space">
-				<img class="players" src="images/logo.png" style="border:none;">
+				
 			</div>
 		</div>
-	<?php } ?>
+	<?php } ?>		
     </div>
 
     <!-- Bootstrap core JavaScript -->
@@ -672,29 +792,39 @@ function ResultToArray($result) {
     <script type="text/javascript" src="tablesorter/js/jquery.tablesorter.js"></script>
     <script src="Chart.js/Chart.min.js"></script>
     <script src="Chart.Scatter.js/Chart.Scatter.min.js"></script>
-
+	
 	<script>
         $(document).ready(function(){
             $(function(){
                 $("table").tablesorter();
-
-				var options = {
+				
+				var optionsMPH = {
 					scaleFontColor : "#ffffff",
-					scaleGridLineColor: "#9d9d9d",
-					scaleLineColor: "#9d9d9d",
+					scaleGridLineColor: "#656565",
+					scaleLineColor: "#656565",
                     bezierCurve: false,
                     scaleType: "date",
                     scaleDateFormat: "mmm",
                     scaleDateTimeFormat: "mmm d, yyyy",
                     scaleLabel: "<%=value%> mph"
                 };
-
+				var optionsSEC = {
+					scaleFontColor : "#ffffff",
+					scaleGridLineColor: "#656565",
+					scaleLineColor: "#656565",
+                    bezierCurve: false,
+                    scaleType: "date",
+                    scaleDateFormat: "mmm",
+                    scaleDateTimeFormat: "mmm d, yyyy",
+                    scaleLabel: "<%=value%> sec"
+                };
+				
                 var battingCTX = $("#battingGraph").get(0).getContext("2d");
                 var battingData = [
                     {
                         label: 'Bat speed',
-                        strokeColor: "rgba(2, 158, 220, 1)",
-                        pointColor: "rgba(2, 158, 220, 1)",
+                        strokeColor: "#8dc8e0",
+                        pointColor: "#8dc8e0",
                         data: [
                             <?php
                             PlotStat($battingGraphData, "date_stats_collected", "bat_speed");
@@ -703,8 +833,8 @@ function ResultToArray($result) {
                     },
                     {
                         label: 'Exit velocity',
-                        strokeColor: "#F16220",
-                        pointColor: "#F16220",
+                        strokeColor: "#029EDC",
+                        pointColor: "#029EDC",
                         data: [
                             <?php
                             PlotStat($battingGraphData, "date_stats_collected", "exit_velocity");
@@ -712,11 +842,111 @@ function ResultToArray($result) {
                         ]
                     },
                 ];
-				var myBattingChart = new Chart(battingCTX).Scatter(battingData, options);
-
-
-
-
+				var myBattingChart = new Chart(battingCTX).Scatter(battingData, optionsMPH);
+				
+				<?php if($pedigree["pos_id"]==1) { ?>
+				var pitchingCTX = $("#pitchingGraph").get(0).getContext("2d");
+                var pitchingData = [
+                    {
+                        label: 'Two Seem',
+                        strokeColor: "#8dc8e0",
+                        pointColor: "#8dc8e0",
+                        data: [
+                            <?php
+                            PlotStat($pitchingGraphData, "date_stats_collected", "two_seem");
+                            ?>
+                        ]
+                    },
+                    {
+                        label: 'Four Seem',
+                        strokeColor: "#029EDC",
+                        pointColor: "#029EDC",
+                        data: [
+                            <?php
+                            PlotStat($pitchingGraphData, "date_stats_collected", "four_seem");
+                            ?>
+                        ]
+                    },
+					{
+                        label: 'Changeball',
+                        strokeColor: "#5edee5",
+                        pointColor: "#5edee5",
+                        data: [
+                            <?php
+                            PlotStat($pitchingGraphData, "date_stats_collected", "changeball");
+                            ?>
+                        ]
+                    },
+                    {
+                        label: 'Curveball',
+                        strokeColor: "#c9c9c9",
+                        pointColor: "#c9c9c9",
+                        data: [
+                            <?php
+                            PlotStat($pitchingGraphData, "date_stats_collected", "curveball");
+                            ?>
+                        ]
+                    },
+					{
+                        label: 'Slider',
+                        strokeColor: "#ffffff",
+                        pointColor: "#ffffff",
+                        data: [
+                            <?php
+                            PlotStat($pitchingGraphData, "date_stats_collected", "slider");
+                            ?>
+                        ]
+                    },
+                    {
+                        label: 'Knuckleball',
+                        strokeColor: "#00bfa5",
+                        pointColor: "#00bfa5",
+                        data: [
+                            <?php
+                            PlotStat($pitchingGraphData, "date_stats_collected", "knuckleball");
+                            ?>
+                        ]
+                    },
+                ];
+				var myPitchingingChart = new Chart(pitchingCTX).Scatter(pitchingData, optionsMPH);
+				<?php } ?>
+				
+				var speedCTX = $("#speedGraph").get(0).getContext("2d");
+                var speedData = [
+                    {
+						label: '60 Yard Dash',
+                        strokeColor: "#8dc8e0",
+                        pointColor: "#8dc8e0",
+                        data: [
+                            <?php
+                            PlotStat($speedGraphData, "date_stats_collected", "sixty_yard_time");
+                            ?>
+                        ]
+                    },
+                    {
+                        label: '120 Yard Dash',
+                        strokeColor: "#029EDC",
+                        pointColor: "#029EDC",
+                        data: [
+                            <?php
+                            PlotStat($speedGraphData, "date_stats_collected", "onetwenty_yard_time");
+                            ?>
+                        ]
+                    },
+					{
+                        label: 'Shuttle Run',
+                        strokeColor: "#5edee5",
+                        pointColor: "#5edee5",
+                        data: [
+                            <?php
+                            PlotStat($speedGraphData, "date_stats_collected", "shuttle_run");
+                            ?>
+                        ]
+                    },
+                ];
+				var mySpeedChart = new Chart(speedCTX).Scatter(speedData, optionsSEC);
+				
+				
                 ctx = $("#myRadarChart").get(0).getContext("2d");
                 data = {
                     labels: ["Running Speed", "Arm Strength", "Hitting for Average", "Hitting for Power", "Fielding"],
@@ -736,7 +966,7 @@ function ResultToArray($result) {
                 options = {
 					// String - Colour of the grid lines
 					scaleGridLineColor: "rgba(220,220,220,1)",
-
+					
                     //Boolean - Whether to show lines for each scale point
                     scaleShowLine : true,
 
@@ -748,7 +978,7 @@ function ResultToArray($result) {
 
                     // Boolean - Whether the scale should begin at zero
                     scaleBeginAtZero : true,
-
+					
 					scaleFontColor : "#ffffff",
 
                     //String - Colour of the angle line
