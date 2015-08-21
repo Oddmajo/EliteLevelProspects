@@ -724,8 +724,8 @@ function ResultToArray($result) {
 			<div class="space" style="margin:0px;">
 				<div class="search"style="float:left;">
 				</div>
-				<div class="search"style="display:inline-block;width:40%;">
-				<img class="players" src="images/logo.png" style="border:none;">
+				<div class="search"style="display:inline-block;width:26%;">
+					<img class="players" src="images/logo.png" style="border:none;height:100%;">
 				</div>
 				<div class="search"style="float:right;">
 				</div>
