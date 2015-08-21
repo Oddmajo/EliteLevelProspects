@@ -20,6 +20,10 @@
         .sorted-column {
             color: #029EDC;
         }
+
+        select {
+            width: 100px !important;
+        }
     </style>
 </head>
 
@@ -152,7 +156,7 @@
         }
 
         function WriteScore($row) {
-            echo $row["rank"] . " " . FormatDebug("(" . $row["score"] . ")");//number_format((float)($row["score"] * 100), 2, '.', '');
+            echo $row["rank"];// . " " . FormatDebug("(" . $row["score"] . ")");
         }
 
         function FormatTime($time) {
@@ -199,6 +203,9 @@
 
         function Rank($array) {
             $size = count($array);
+            if ($size == 0)
+                return $array;
+
             $currentRank = 1;
             $array[0]["rank"] = $currentRank;
 
@@ -271,16 +278,44 @@
             These values are for testing purposes only and may be grossly inaccurate.
         </div>
 
-        <h2>Hitting</h2>
-        <canvas id="myChart" width="800" height="400"></canvas>
-        <h2>Five-Tool Model <span class="small">Rating: 3.6</span></h2>
-        <canvas id="myRadarChart" width="400" height="300"></canvas>
         <div class="alert alert-info">
             <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
             <span class="sr-only">Tip:</span>
             To sort the table by a column, click the column title you want to sort by.
         </div>
 
+        <form class="form-inline" action="?selected=1" method="post">
+            <div class="form-group">
+                <label>Graduation Year </label>
+                <select class="form-control" id="gradYearSelect" name="gradYear">
+                      <option>2012</option>
+                      <option>2011</option>
+                      <option>2010</option>
+                </select>
+                <label> See stats for </label>
+                <select class="form-control" id="tableTypeSelect" name="tableType">
+                      <option value="hitting">Hitting</option>
+                      <option value="pitching">Pitching</option>
+                      <option value="fielding">Fielding</option>
+                      <option value="speed">Speed</option>
+                </select>
+                <button class="btn btn-primary" type="submit">Go</button>
+            </div>
+        </form>
+<!--
+        <h2>Hitting</h2>
+        <canvas id="myChart" width="800" height="400"></canvas>
+        <h2>Five-Tool Model <span class="small">Rating: 3.6</span></h2>
+        <canvas id="myRadarChart" width="400" height="300"></canvas>
+    -->
+
+        <?php
+            if (isset($_GET["selected"])) {
+                $gradYear = $_POST["gradYear"];
+                $tableType = $_POST["tableType"];
+
+                if ($tableType == "hitting") {
+        ?>
         <h2 id="hitting">Hitting</h2>
         <table class="table table-striped table-hover tablesorter" id="hittingTable">
             <thead>
@@ -323,7 +358,7 @@
                     ) ps3
                     ON player_details.player_id = ps3.player_id
 
-                    WHERE (batspeed_id IS NOT NULL)
+                    WHERE ((batspeed_id IS NOT NULL) AND player_details.grad_year = '" . $gradYear . "')
 
                     ORDER BY b3.score DESC";
                     $result = $conn->query($query);
@@ -346,6 +381,9 @@
             </tbody>
         </table>
 
+        <?php
+                } else if ($tableType == "pitching") {
+        ?>
         <h2 id="pitching">Pitching</h2>
         <table class="table table-striped table-hover tablesorter" id="pitchingTable">
             <thead>
@@ -374,7 +412,7 @@
                     ) p3
                     ON player_details.player_id = p3.player_id
 
-                    WHERE pitcher_id IS NOT NULL
+                    WHERE ((pitcher_id IS NOT NULL) AND player_details.grad_year = '" . $gradYear . "')
 
                     ORDER BY p3.curveball DESC";
                     $result = $conn->query($query);
@@ -394,6 +432,9 @@
             </tbody>
         </table>
 
+        <?php
+                } else if ($tableType == "fielding") {
+        ?>
         <h2 id="fielding">Fielding</h2>
         <table class="table table-striped table-hover tablesorter" id="fieldingTable">
             <thead>
@@ -440,7 +481,7 @@
                         )
                     ) c3 ON player_details.player_id = c3.player_id
 
-                    WHERE (outfielder_id IS NOT NULL OR infielder_id IS NOT NULL OR catcher_id IS NOT NULL )
+                    WHERE ((outfielder_id IS NOT NULL OR infielder_id IS NOT NULL OR catcher_id IS NOT NULL) AND player_details.grad_year = '" . $gradYear . "')
 
                     ORDER BY of3.throwing_speed DESC";
                     $result = $conn->query($query);
@@ -459,6 +500,9 @@
             </tbody>
         </table>
 
+        <?php
+    } else if ($tableType == "speed") {
+        ?>
         <h2 id="speed">Speed</h2>
         <table class="table table-striped table-hover tablesorter" id="speedTable">
             <thead>
@@ -488,6 +532,8 @@
                         )
                     ) t3 ON player_details.player_id = t3.player_id
 
+                    WHERE player_details.grad_year = '" . $gradYear . "'
+
                     ORDER BY score DESC";
                     $result = $conn->query($query);
                     $array = Rank(ResultToArray($result));
@@ -508,6 +554,10 @@
                 ?>
             </tbody>
         </table>
+        <?php
+                }
+            }
+        ?>
     </div>
 
     <!-- Bootstrap core JavaScript -->
@@ -524,6 +574,7 @@
 
     <script>
         window.onload = function() {
+            /*
             var ctx = document.getElementById("myChart").getContext("2d");
             var data = [
                 {
@@ -650,6 +701,11 @@
 
             };
             var myRadarChart = new Chart(ctx).Radar(data, options);
+            */
+            <?php if (isset($_GET["selected"])) { ?>
+            document.getElementById('gradYearSelect').value = "<?php echo $_POST['gradYear'];?>";
+            document.getElementById('tableTypeSelect').value = "<?php echo $_POST['tableType'];?>";
+            <?php } ?>
 
             $("table").tablesorter();
 

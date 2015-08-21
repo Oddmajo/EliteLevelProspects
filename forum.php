@@ -29,14 +29,24 @@
     ?>
 <div class="custom-container">
 <div class="row">
-<div class="col-md-2">
-    This will be the user profile
+<div class="col-md-3">
+    <h4>Profile</h4>
 </div>
-<div class="col-md-8">
-    <div class="alert alert-success" role="alert">
-        Stay up to date on athletes that other coaches are following or promoting!
-        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    </div>
+<div class="col-md-6">
+    <ul class="nav nav-tabs">
+          <li class="active"><a href="#">Players</a></li>
+          <li><a href="#">Teams</a></li>
+          <li><a href="#">Events</a></li>
+    </ul>
+
+    <form class="panel panel-default">
+        <div class="panel-body">
+            <textarea class="form-control" rows="5" id="comment"></textarea>
+        </div>
+        <div class="panel-footer">
+            <button class="btn btn-primary" type="submit">Post</button>
+        </div>
+    </form>
 
     <div class="panel panel-default">
         <div class="panel-body">
@@ -82,22 +92,8 @@
         </div>
     </div>
 </div>
-<div class="col-md-2">
+<div class="col-md-3">
     <h4>Options</h4>
-    <form>
-        <div class="checkbox">
-            <label><input type="checkbox">Check me out</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox">Check me out</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox">Check me out</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox">Check me out</label>
-        </div>
-    </form>
 </div>
 </div>
 </div>

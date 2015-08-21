@@ -31,11 +31,13 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="home.php">Home</a></li>
                 <li><a href="forum.php">Coaches Forum</a></li>
-                <li><a href="forum.php">Trainers</a></li>
+                <li><a href="trainers.php">Trainers</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Prospects <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="players.php">Player Bios</a></li>
+                        <li><a href="rankings.php">Top Prospects</a></li>
+                        <!--
                         <li role="separator" class="divider"></li>
                         <li class="dropdown-header">Graduation Year</li>
                         <li class="dropdown-submenu">
@@ -75,6 +77,7 @@
                                 <li><a href="#">Speed</a></li>
                             </ul>
                         </li>
+                    -->
                     </ul>
                 </li>
                 <li><a href="about.php">About</a></li>

@@ -142,17 +142,17 @@
         <div class="col-lg-4">
             <h2>Our Mission</h2>
             <p>We want to make you the best you can be. As you train with us and improve, your stats are updated in real-time on our site. Baseball scouts get access to a list of the best players in your area. Make sure you're on that list!</p>
-            <p><a class="btn btn-default" href="about.php#foo" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-default" href="about.php" role="button">View details &raquo;</a></p>
         </div>
         <div class="col-lg-4">
             <h2>Five-Tool Model</h2>
             <p>Running speed. Arm strength. Hitting for average. Hitting for power. Fielding. We rank you and your peers using our own formula that incorporates all five of these key statistics.</p>
-            <p><a class="btn btn-default" href="about.php" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-default" href="five-tool.php" role="button">View details &raquo;</a></p>
         </div>
         <div class="col-lg-4">
             <h2>Find a Facility</h2>
             <p>Part of doing your best is training hard. We currently have 1 training facility located in Peoria, IL. Stop in for a session any time, no need for a membership--but if you want to get the word out, create an account and we'll update your profile after every training session.</p>
-            <p><a class="btn btn-default" href="about.php" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-default" href="http://pahouseofspeed.com/" role="button">View details &raquo;</a></p>
         </div>
     </div>
 
@@ -179,6 +179,10 @@
         $(".nav a").on("click", function(){
             $(".nav").find(".active").removeClass("active");
             $(this).parent().addClass("active");
+        });
+
+        $('#myCarousel').carousel({
+            interval: 10000
         });
     </script>
 </body>
