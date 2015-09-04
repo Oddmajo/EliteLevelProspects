@@ -31,23 +31,20 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="home.php">Home</a></li>
                 <li><a href="forum.php">Coaches Forum</a></li>
-                <li><a href="trainers.php">Trainers</a></li>
+                <li><a href="forum.php">Trainers</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Prospects <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="players.php">Player Bios</a></li>
-                        <li><a href="rankings.php">Top Prospects</a></li>
-                        <!--
+                        <li><a href="lookup.php">Player Bios</a></li>
                         <li role="separator" class="divider"></li>
                         <li class="dropdown-header">Graduation Year</li>
                         <li class="dropdown-submenu">
-                            <a tabindex="-1" href="rankings.php">2018</a>
+                            <a tabindex="-1" href="#">2018</a>
                             <ul class="dropdown-menu">
                                 <li class="dropdown-header">Specialty</li>
-                                <li><a href="rankings.php#hitting">Hitting</a></li>
-                                <li><a href="rankings.php#pitching">Pitching</a></li>
-                                <li><a href="rankings.php#fielding">Fielding</a></li>
-                                <li><a href="rankings.php#speed">Speed</a></li>
+                                <li><a href="#">Hitting</a></li>
+                                <li><a href="#">Pitching/Fielding</a></li>
+                                <li><a href="#">Speed</a></li>
                             </ul>
                         </li>
                         <li class="dropdown-submenu">
@@ -77,7 +74,6 @@
                                 <li><a href="#">Speed</a></li>
                             </ul>
                         </li>
-                    -->
                     </ul>
                 </li>
                 <li><a href="about.php">About</a></li>

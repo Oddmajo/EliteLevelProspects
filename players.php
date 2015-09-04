@@ -109,6 +109,18 @@ function ResultToArray($result) {
 	
 	
 	<?php
+	//Coach Follows
+	/**$query = " SELECT coach_follows.player_id, coach_follows.account_id, player_details.player_id, player_details.first_name, player_details.last_name
+		
+		FROM coach_follows, player_details
+		
+		WHERE coach_follows.account_id = 4 AND player_details.player_id = coach_follows.player_id
+		
+		ORDER BY follows_id"; //This will need to be dynamic
+	$coachfollows = $conn->query($query)**/
+		
+		
+	
 	if(isset($playerId))
 	{
 		$query = "SELECT 
@@ -238,7 +250,9 @@ function ResultToArray($result) {
 		$battingGraphData = ResultToArray($result);
 		$batGraph = array("bat_speed", "exit_velocity");
 		
-		//Fielding Graph
+		//Pitching Graph
+		//if($pedigree['pos_id']==1)
+		{
 		$query = "SELECT *
 		FROM pitcher_stats
 		WHERE player_id = " . $playerId . "
@@ -247,6 +261,13 @@ function ResultToArray($result) {
 		$result = $conn->query($query);
 		$pitchingGraphData = ResultToArray($result);
 		$pitchingGraph = array("two_seem", "four_seem","changeball","curveball","slider","knuckleball");
+		}
+		//Fielding Graph
+		//else
+		{
+			
+			
+		}
 		
 		//Speed Graph
 		$query = "SELECT *
@@ -289,20 +310,20 @@ function ResultToArray($result) {
 					<?php echo $username; ?>
 				</h1>
 				<ul class="sidebar">
-					<li class="left">1. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a href="players.php?player=1&tempFollow=1&tempMod=0">John Altemus </a></li>
-					<li class="left">2. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a href="players.php?player=2&tempFollow=1&tempMod=0">Eric Buonamici </a></li>
-					<li class="left">3. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a href="players.php?player=3&tempFollow=1&tempMod=0">Lovell Chandler </a></li>
-					<li class="left">4. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a href="players.php?player=4&tempFollow=1&tempMod=0">Joe Coy </a></li>
-					<li class="left">5. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a href="players.php?player=5&tempFollow=1&tempMod=0">Scott Foltz </a></li>
-					<li class="left">6. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a href="players.php?player=6&tempFollow=1&tempMod=0">Christopher Leopold </a></li>
-					<li class="left">7. <a href="players.php"> TEST LINK</a></li>
-					<li class="left">8. <a href="players.php"> TEST LINK</a></li>
-					<li class="left">9. <a href="players.php"> TEST LINK</a></li>
-					<li class="left">10. <a href="players.php"> TEST LINK</a></li>
+					Pretend this works
+					<!--<?php 
+					//$count = 1;
+					//while($row = $coachfollows->fetch_assoc()) { ?>
+					
+					<li class="left"><?php //echo $count ?>. <img class ="sidebar" src="images/hitter.jpg">&nbsp;&nbsp;<a href="players.php?player= <?php echo $row['player_id']?>&tempFollow=1&tempMod=0"><?php echo $row['first_name']?> <?php echo $row['last_name']?></a></li>
+						
+					<?php 
+					//$count++;
+					//} ?>-->
 				</ul>
 			</div>
 		</div>
-		<?php if(isset($playerId)) { ?>
+		<?php if($_GET['tempMod']==0) { ?>
 		<div class="main">
 			<div class="space" style="margin:0px;">
 				<div class="basesegment">
@@ -469,6 +490,7 @@ function ResultToArray($result) {
 											<canvas id="battingGraph" width="800px" height="480px"></canvas>
 										</div>
 										<div class="rightbox">
+										&nbsp;
 											<ul class="stats">
 												<li class="cat">Bat Speed:</li>
 												<li class="stat"style="color:#8dc8e0;"><?php echo $batting["bat_speed"]?> mph</li>
@@ -485,9 +507,14 @@ function ResultToArray($result) {
 								</div>
 								<div id="ball2">
 									<div class="leftbox">
-											<canvas id="pitchingGraph" width="800px" height="480px"></canvas>
+											<?php if(($pedigree["pos_id"])==1) { ?>
+												<canvas id="pitchingGraph" width="800px" height="480px"></canvas>
+											<?php } else { ?>
+												This is a graph - - - REPLACE ME!!!
+											<?php } ?>
 										</div>
 										<div class="rightbox">
+										&nbsp;
 											<?php if(($pedigree["pos_id"])==1) { ?>
 											<ul class="stats">
 												<li class="cat">Two Seem:</li>
@@ -518,6 +545,7 @@ function ResultToArray($result) {
 											<canvas id="speedGraph" width="800px" height="480px"></canvas>
 										</div>
 										<div class="rightbox">
+										&nbsp;
 											<ul class="stats">
 												<li class="cat">60 Yard Time:</li>
 												<li class="stat"style="color:#8dc8e0;"><?php echo $speed["sixty_yard_time"]?> seconds</li>
@@ -719,65 +747,384 @@ function ResultToArray($result) {
 		</div>
 		
 	<?php } else { ?>
-	
-		<div class="main">
+	<div class="main">
 			<div class="space" style="margin:0px;">
-				<div class="search"style="float:left;">
-				</div>
-				<div class="search"style="display:inline-block;width:26%;">
-					<img class="players" src="images/logo.png" style="border:none;height:100%;">
-				</div>
-				<div class="search"style="float:right;">
-				</div>
-				<div class="space"style="margin-left:250px;margin-right:250px;">
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search Prospects">
-						<span class="input-group-btn">
-							<button class="btn btn-default" type="button">Go!</button>
-						</span>
+				<div class="basesegment">
+						<ul class="name">
+							<li><?php echo $pedigree["first_name"]?>&nbsp;<?php echo $pedigree["last_name"]?></li>
+							<li class="small dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bats/Throws <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="">R/R</a></li>
+									<li><a href="">R/L</a></li>
+									<li><a href="">L/R</a></li>
+									<li><a href="">L/L</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Position <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="">Pitcher</a></li>
+									<li><a href="">Catcher</a></li>
+									<li><a href="">Base One</a></li>
+									<li><a href="">Base Two</a></li>
+									<li><a href="">Base Three</a></li>
+									<li><a href="">Shortstop</a></li>
+									<li><a href="">Right Field</a></li>
+									<li><a href="">Center Field</a></li>
+									<li><a href="">Left Field</a></li>
+								</ul>
+							</li>
+							<li class="small"><?php echo $pedigree["grad_year"]?></li>
+							<li>
+							<?php if(($_GET['tempMod'])==1) { ?>
+								<a href="players.php">Edit Stats</a>
+							<?php } else { ?>
+							<a href="players.php?player=<?php echo $playerId;?>&tempFollow=<?php echo $_GET['tempFollow'] * -1?>&tempMod=0">
+							<?php if($_GET['tempFollow']==1){echo "Unfollow";} else {echo "Follow";} } ?></a>
+							</li>
+						</ul>
+					<div class="space">
+						<div class="profilepicture">
+							<div class="space">
+								<img class="players" src="images/hitter.jpg">
+							</div>
+						</div>
+
+						<div class="basestatistics">
+							<div class="space">
+								<ul class="profile">
+									<li class="cat">Height: </li>
+									<li class="stat">
+										<div class="input-group">
+											<input type="text" class="form-control" placeholder="<?php echo $feet . "'" . $inches . '"'?>">
+										</div>
+									</li>
+									<li class="cat">Weight: </li>
+									<li class="stat">
+										<div class="input-group">
+											<input type="text" class="form-control" placeholder="<?php echo $pedigree["weight"];?> lbs">
+										</div>
+									</li>
+									<li class="cat">Date of Birth: </li>
+									<li class="stat">
+										<div class="input-group">
+											<input type="text" class="form-control" placeholder="<?php echo $pedigree["dob"];?>">
+										</div>
+									</li>
+									<li class="cat">Graduating Year: </li>
+									<li class="stat">
+										<div class="input-group">
+											<input type="text" class="form-control" placeholder="<?php echo $pedigree["grad_year"];?>">
+										</div>
+									</li>
+									<li class="cat">School: </li>
+									<li class="stat">
+										<div class="input-group">
+											<input type="text" class="form-control" placeholder="<?php echo $pedigree["name"];?>">
+										</div>
+									</li>
+									<li class="cat">GPA: </li>
+									<li class="stat">
+										<div class="input-group">
+											<input type="text" class="form-control" placeholder="<?php echo $pedigree["gpa"];?>">
+										</div>
+									</li>
+									<li class="cat">City: </li>
+									<li class="stat">
+										<div class="input-group">
+											<input type="text" class="form-control" placeholder="<?php echo $pedigree["city"];?>">
+										</div>
+									</li>
+									<li class="cat">State: </li>
+									<li class="stat">
+										<div class="input-group">
+											<input type="text" class="form-control" placeholder="<?php echo $pedigree["state"];?>">
+										</div>
+									</li>
+									<li class="cat" style="border:none; margin:0px;">Rank: </li>
+									<li class="stat" style="border:none; margin:0px;">Implement This</li>
+									<li class="cat" style="border:none; margin:0px;">Rating: </li>
+									<li class="stat" style="border:none; margin:0px;">Implement This</li>
+								</ul>
+							</div>
+							<ul class="tabs">
+								<li class="four"><a href="#vids">Videos</a></li>
+								<li class="four"><a href="#anal">Analysis</a></li>
+								<li class="four"><a href="#project">Projections</a></li>
+								<li class="four selected"><a href="#default">Bio</a></li>
+							</ul>
+						</div>
+
+
 					</div>
-					<ul class="search">
-						<li class="dropdown" style="width:25%;">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">2015 <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="players.php">Hitting</a></li>
-								<li><a href="players.php">Pitching/Fielding</a></li>
-								<li><a href="players.php">Speed</a></li>
+				</div>
+				
+				
+				
+				<div class="tabcontent" style="padding:0px;margin-top:25px;">
+					<div id="default">
+					</div>
+					<div id="vids">
+						<div class="tabbedsegment">
+							<ul class="tabs">
+								<li class="three"><a href="#bat1">Hitting</a></li>
+								<li class="three"><a href="#ball1"><?php echo $field?></a></li>
+								<li class="three"><a href="#run1">Speed</a></li>
 							</ul>
-						</li>
-						<li class="dropdown" style="width:25%;">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">2016 <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="players.php">Hitting</a></li>
-								<li><a href="players.php">Pitching/Fielding</a></li>
-								<li><a href="players.php">Speed</a></li>
+							<div class="tabcontent">
+								<div id="bat1">
+									
+										<div class="leftbox">
+											<iframe width="100%" height="480" src="https://www.youtube.com/embed/wlXuqdzA1nY" frameborder="0" allowfullscreen></iframe>
+										</div>
+										<div class="rightbox">
+											Date Updated: <?php echo $batting["date_stats_collected"]?>
+											<ul class="stats">
+												<li class="cat">Bat Speed:</li>
+												<li class="stat"><?php echo $batting["bat_speed"]?> mph</li>
+												<li class="cat">Velocity:</li>
+												<li class="stat"><?php echo $batting["exit_velocity"]?> mph</li>
+												<li class="cat">Bench Press:</li>
+												<li class="stat"><?php echo $strength["bench_press"]?> lbs</li>
+												<li class="cat">Squat:</li>
+												<li class="stat"><?php echo $strength["squat"]?> lbs</li>
+												<li class="cat">Dead Lift:</li>
+												<li class="stat"><?php echo $strength["dead_lift"]?> lbs</li>
+											</ul>
+										</div>
+									
+								</div>
+								<div id="ball1">
+									
+										<div class="leftbox">
+											<iframe width="100%" height="480" src="https://www.youtube.com/embed/wlXuqdzA1nY" frameborder="0" allowfullscreen></iframe>
+										</div>
+										<div class="rightbox">
+											Date Updated: <?php echo $fielding["date_stats_collected"]?>
+											<?php if(($pedigree["pos_id"])==1) { ?>
+											<ul class="stats">
+												<li class="cat">Two Seem:</li>
+												<li class="stat"><?php echo $fielding["two_seem"]?> mph</li>
+												<li class="cat">Four Seem:</li>
+												<li class="stat"><?php echo $fielding["four_seem"]?> mph</li>
+												<li class="cat">Changeball:</li>
+												<li class="stat"><?php echo $fielding["changeball"]?> mph</li>
+												<li class="cat">Curveball:</li>
+												<li class="stat"><?php echo $fielding["curveball"]?> mph</li>
+												<li class="cat">Slider:</li>
+												<li class="stat"><?php echo $fielding["slider"]?> mph</li>
+												<li class="cat">Knuckleball:</li>
+												<li class="stat"><?php echo $fielding["knuckleball"]?> mph</li>
+											</ul>
+											<?php } else { ?>
+											<ul class="stats">
+												<li class="cat">Throwing Speed:</li>
+												<li class="stat"><?php echo $fielding["throwing_speed"]?> mph</li>
+												<li class="cat">Pop Time:</li>
+												<li class="stat"><?php echo $catching["pop_time"]?> seconds</li>
+											</ul>
+											<?php } ?>
+										</div>
+									
+								</div>
+								<div id="run1">
+									
+										<div class="leftbox">
+											<iframe width="100%" height="480" src="https://www.youtube.com/embed/wlXuqdzA1nY" frameborder="0" allowfullscreen></iframe>
+										</div>
+										<div class="rightbox">
+											Date Updated: <?php echo $speed["date_stats_collected"]?>
+											<ul class="stats">
+												<li class="cat">60 Yard Time:</li>
+												<li class="stat"><?php echo $speed["sixty_yard_time"]?> seconds</li>
+												<li class="cat">120 Yard Time:</li>
+												<li class="stat"><?php echo $speed["onetwenty_yard_time"]?> seconds</li>
+												<li class="cat">Shuttle Run:</li>
+												<li class="stat"><?php echo $speed["shuttle_run"]?> seconds</li>
+												<li class="cat">Vertical Leap:</li>
+												<li class="stat"><?php echo $speed["vertical_leap"]?> inches</li>
+												<li class="cat">Reach:</li>
+												<li class="stat"><?php echo $speed["reach"]?> inches</li>
+											</ul>
+										</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="anal">
+						<div class="tabbedsegment">
+							<ul class="tabs">
+								<li class="three"><a href="#bat2">Hitting</a></li>
+								<li class="three"><a href="#ball2"><?php echo $field?></a></li>
+								<li class="three"><a href="#run2">Speed</a></li>
 							</ul>
-						</li>
-						<li class="dropdown" style="width:25%;">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">2017 <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="players.php">Hitting</a></li>
-								<li><a href="players.php">Pitching/Fielding</a></li>
-								<li><a href="players.php">Speed</a></li>
+							<div class="tabcontent">
+								<div id="bat2">
+									<div class="leftbox">
+											<canvas id="battingGraph" width="800px" height="480px"></canvas>
+										</div>
+										<div class="rightbox">
+										&nbsp;
+											<ul class="stats">
+												<li class="cat">Bat Speed:</li>
+												<li class="stat"style="color:#8dc8e0;"><?php echo $batting["bat_speed"]?> mph</li>
+												<li class="cat">Velocity:</li>
+												<li class="stat"style="color:#029EDC;"><?php echo $batting["exit_velocity"]?> mph</li>
+												<li class="cat">Bench Press:</li>
+												<li class="stat"><?php echo $strength["bench_press"]?> lbs</li>
+												<li class="cat">Squat:</li>
+												<li class="stat"><?php echo $strength["squat"]?> lbs</li>
+												<li class="cat">Dead Lift:</li>
+												<li class="stat"><?php echo $strength["dead_lift"]?> lbs</li>
+											</ul>
+										</div>
+								</div>
+								<div id="ball2">
+									<div class="leftbox">
+											<?php if(($pedigree["pos_id"])==1) { ?>
+												<canvas id="pitchingGraph" width="800px" height="480px"></canvas>
+											<?php } else { ?>
+												This is a graph - - - REPLACE ME!!!
+											<?php } ?>
+										</div>
+										<div class="rightbox">
+										&nbsp;
+											<?php if(($pedigree["pos_id"])==1) { ?>
+											<ul class="stats">
+												<li class="cat">Two Seem:</li>
+												<li class="stat"style="color:#8dc8e0;"><?php echo $fielding["two_seem"]?> mph</li>
+												<li class="cat">Four Seem:</li>
+												<li class="stat"style="color:#029EDC;"><?php echo $fielding["four_seem"]?> mph</li>
+												<li class="cat">Changeball:</li>
+												<li class="stat"style="color:#5edee5;"><?php echo $fielding["changeball"]?> mph</li>
+												<li class="cat">Curveball:</li>
+												<li class="stat"style="color:#c9c9c9;"><?php echo $fielding["curveball"]?> mph</li>
+												<li class="cat">Slider:</li>
+												<li class="stat"style="color:#ffffff;"><?php echo $fielding["slider"]?> mph</li>
+												<li class="cat">Knuckleball:</li>
+												<li class="stat"style="color:#00bfa5;"><?php echo $fielding["knuckleball"]?> mph</li>
+											</ul>
+											<?php } else { ?>
+											<ul class="stats">
+												<li class="cat">Throwing Speed:</li>
+												<li class="stat"><?php echo $fielding["throwing_speed"]?> mph</li>
+												<li class="cat">Pop Time:</li>
+												<li class="stat"><?php echo $catching["pop_time"]?> seconds</li>
+											</ul>
+											<?php } ?>
+										</div>
+								</div>
+								<div id="run2">
+									<div class="leftbox">
+											<canvas id="speedGraph" width="800px" height="480px"></canvas>
+										</div>
+										<div class="rightbox">
+										&nbsp;
+											<ul class="stats">
+												<li class="cat">60 Yard Time:</li>
+												<li class="stat"style="color:#8dc8e0;"><?php echo $speed["sixty_yard_time"]?> seconds</li>
+												<li class="cat">120 Yard Time:</li>
+												<li class="stat"style="color:#029EDC;"><?php echo $speed["onetwenty_yard_time"]?> seconds</li>
+												<li class="cat">Shuttle Run:</li>
+												<li class="stat"style="color:#5edee5;"><?php echo $speed["shuttle_run"]?> seconds</li>
+												<li class="cat">Vertical Leap:</li>
+												<li class="stat"><?php echo $speed["vertical_leap"]?> inches</li>
+												<li class="cat">Reach:</li>
+												<li class="stat"><?php echo $speed["reach"]?> inches</li>
+											</ul>
+										</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="project">
+						<div class="tabbedsegment">
+							<ul class="tabs">
+								<li class="three"><a href="#bat3">Hitting</a></li>
+								<li class="three"><a href="#ball3"><?php echo $field?></a></li>
+								<li class="three"><a href="#run3">Speed</a></li>
 							</ul>
-						</li>
-						<li class="dropdown" style="width:25%;">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">2018 <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="players.php">Hitting</a></li>
-								<li><a href="players.php">Pitching/Fielding</a></li>
-								<li><a href="players.php">Speed</a></li>
-							</ul>
-						</li>
-					</ul>
+							<div class="tabcontent">
+								<div id="bat3">
+									<div class="leftbox">
+										PROJECTIONS TO BE IMPLEMENTED
+									</div>
+									<div class="rightbox">
+										PROJECTIONS TO BE IMPLEMENTED
+										<ul class="stats">
+											<li class="cat">Bat Speed:</li>
+											<li class="stat"><?php echo $batting["bat_speed"]?> mph</li>
+											<li class="cat">Velocity:</li>
+											<li class="stat"><?php echo $batting["exit_velocity"]?> mph</li>
+											<li class="cat">Bench Press:</li>
+											<li class="stat"><?php echo $strength["bench_press"]?> lbs</li>
+											<li class="cat">Squat:</li>
+											<li class="stat"><?php echo $strength["squat"]?> lbs</li>
+											<li class="cat">Dead Lift:</li>
+											<li class="stat"><?php echo $strength["dead_lift"]?> lbs</li>
+										</ul>
+									</div>
+								</div>
+								<div id="ball3">
+									<div class="leftbox">
+										PROJECTIONS TO BE IMPLEMENTED
+									</div>
+									<div class="rightbox">
+										PROJECTIONS TO BE IMPLEMENTED
+										<?php if(($pedigree["pos_id"])==1) { ?>
+										<ul class="stats">
+											<li class="cat">Two Seem:</li>
+											<li class="stat"><?php echo $fielding["two_seem"]?> mph</li>
+											<li class="cat">Four Seem:</li>
+											<li class="stat"><?php echo $fielding["four_seem"]?> mph</li>
+											<li class="cat">Changeball:</li>
+											<li class="stat"><?php echo $fielding["changeball"]?> mph</li>
+											<li class="cat">Curveball:</li>
+											<li class="stat"><?php echo $fielding["curveball"]?> mph</li>
+											<li class="cat">Slider:</li>
+											<li class="stat"><?php echo $fielding["slider"]?> mph</li>
+											<li class="cat">Knuckleball:</li>
+											<li class="stat"><?php echo $fielding["knuckleball"]?> mph</li>
+										</ul>
+										<?php } else { ?>
+										<ul class="stats">
+											<li class="cat">Throwing Speed:</li>
+											<li class="stat"><?php echo $fielding["throwing_speed"]?> mph</li>
+											<li class="cat">Pop Time:</li>
+											<li class="stat"><?php echo $catching["pop_time"]?> seconds</li>
+										</ul>
+										<?php } ?>
+									</div>
+								</div>
+								<div id="run3">
+									<div class="leftbox">
+										PROJECTIONS TO BE IMPLEMENTED
+									</div>
+									<div class="rightbox">
+										PROJECTIONS TO BE IMPLEMENTED
+										<ul class="stats">
+											<li class="cat">60 Yard Time:</li>
+											<li class="stat"><?php echo $speed["sixty_yard_time"]?> seconds</li>
+											<li class="cat">120 Yard Time:</li>
+											<li class="stat"><?php echo $speed["onetwenty_yard_time"]?> seconds</li>
+											<li class="cat">Shuttle Run:</li>
+											<li class="stat"><?php echo $speed["shuttle_run"]?> seconds</li>
+											<li class="cat">Vertical Leap:</li>
+											<li class="stat"><?php echo $speed["vertical_leap"]?> inches</li>
+											<li class="cat">Reach:</li>
+											<li class="stat"><?php echo $speed["reach"]?> inches</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="bg-right">
-			<div class="space">
-				
-			</div>
-		</div>
+	</div>
 	<?php } ?>		
     </div>
 
