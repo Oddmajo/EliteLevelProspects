@@ -37,7 +37,7 @@
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = "elp statistics";
+        $dbname = "elitelevelprospects";
 
         // Player id
         $playerId = 10;
